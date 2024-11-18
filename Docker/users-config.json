@@ -1,12 +1,30 @@
 [
   {
     "SubjectId": "1",
-    "Username": "user",
+    "Username": "user1",
     "Password": "pwd",
     "Claims": [
       {
         "Type": "name",
-        "Value": "Some Name"
+        "Value": "OIDC User 1",
+		"ValueType": "string"
+      },
+      {
+        "Type": "roles",
+        "Value": "[\"Level6\"]",
+        "ValueType": "json"
+      }
+    ]
+  },
+  {
+    "SubjectId": "2",
+    "Username": "user2",
+    "Password": "pwd",
+    "Claims": [
+      {
+        "Type": "name",
+        "Value": "OIDC User 2",
+		"ValueType": "string"
       },
       {
         "Type": "roles",

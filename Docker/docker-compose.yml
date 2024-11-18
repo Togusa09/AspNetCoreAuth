@@ -1,27 +1,8 @@
 services:
-  azurite:
-    image: mcr.microsoft.com/azure-storage/azurite
-    volumes:
-     - azurite:/data
-    networks:
-      proxy_net: null
-    ports:
-      - 10000:10000
-      - 10001:10001
-      - 10002:10002
-  seq:
-    image: 'datalust/seq:latest'
-    volumes:
-    - seqdata:/data
-    ports:
-    - 80:80
-    - 5341:5341
-    environment:
-      ACCEPT_EULA: Y
   oidc-server-mock:
     image: ghcr.io/soluto/oidc-server-mock
     ports:
-      - "4011:8080"
+      - "4012:8080"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       SERVER_OPTIONS_INLINE: |
@@ -52,12 +33,12 @@ services:
             "Scopes": ["workshop"],
             "UserClaims": [
               "roles",
-              "name",
               "title",
               "given_name",
               "aud",
               "family_name",
-              "email"
+              "email",
+              "name",
             ]
           }
         ]

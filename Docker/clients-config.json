@@ -6,7 +6,7 @@
     "RequirePkce": true,
     "RequireClientSecret": false,
     "AllowAccessTokensViaBrowser": true,
-    "RedirectUris": ["https://localhost:44302/signin-oidc"],
+    "RedirectUris": ["https://localhost:7089/signin-oidc"],
     "AllowedScopes": [
       "openid",
       "profile",

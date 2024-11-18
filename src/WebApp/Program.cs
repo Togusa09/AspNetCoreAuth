@@ -1,4 +1,9 @@
+using System.Diagnostics;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,19 +11,41 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication(sharedOptions =>
-{
-    sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-}).AddCookie(options =>
-{
-    options.Cookie.Name = "WorkshopAuthCookie";
-    options.LoginPath = "/Login/Login";
-    options.LogoutPath = "/Login/Logut";
-    options.Events.OnValidatePrincipal = (context) =>
     {
-         //context.RejectPrincipal();
-         return Task.CompletedTask;
-    };
-});
+        sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    }).AddCookie(options =>
+    {
+        options.Cookie.Name = "WorkshopAuthCookie";
+        //options.LoginPath = "/Login/Login";
+        //options.LogoutPath = "/Login/Logut";
+        options.Events.OnValidatePrincipal = (context) =>
+        {
+            //context.RejectPrincipal();
+            return Task.CompletedTask;
+        };
+    })
+    .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, (options) =>
+    {
+        options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+        options.Authority = "http://localhost:4012";
+        options.ClientId = "WebApp";
+
+        options.ResponseType = OpenIdConnectResponseType.Code;
+        options.ResponseMode = OpenIdConnectResponseMode.FormPost;
+
+        options.Scope.Add("email");
+        options.Scope.Add("workshop");
+
+        options.TokenValidationParameters.NameClaimType = "name";
+
+        options.RequireHttpsMetadata = !builder.Environment.IsDevelopment();
+        options.Events.OnTokenValidated = (context) =>
+        {
+            Debug.WriteLine("Test");
+            return Task.CompletedTask;
+        };
+    });
 
 var app = builder.Build();
 
