@@ -1,0 +1,23 @@
+[
+  {
+    "ClientId": "WebApp",
+    "Description": "Auth code flow client",
+    "AllowedGrantTypes": ["authorization_code"],
+    "RequirePkce": true,
+    "RequireClientSecret": false,
+    "AllowAccessTokensViaBrowser": true,
+    "RedirectUris": ["https://localhost:44302/signin-oidc"],
+    "AllowedScopes": [
+      "openid",
+      "profile",
+      "email",
+      "offline_access",
+      "workshop",
+    ],
+    "IdentityTokenLifetime": 120,
+    "AccessTokenLifetime": 120,
+    "AlwaysIncludeUserClaimsInIdToken": true,
+    "AlwaysSendClientClaims": true,
+    "AllowOfflineAccess": true
+  }
+]

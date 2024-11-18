@@ -1,0 +1,18 @@
+[
+  {
+    "SubjectId": "1",
+    "Username": "user",
+    "Password": "pwd",
+    "Claims": [
+      {
+        "Type": "name",
+        "Value": "Some Name"
+      },
+      {
+        "Type": "roles",
+        "Value": "[\"Level6\"]",
+        "ValueType": "json"
+      }
+    ]
+  }
+]

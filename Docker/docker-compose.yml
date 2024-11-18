@@ -1,0 +1,77 @@
+services:
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    volumes:
+     - azurite:/data
+    networks:
+      proxy_net: null
+    ports:
+      - 10000:10000
+      - 10001:10001
+      - 10002:10002
+  seq:
+    image: 'datalust/seq:latest'
+    volumes:
+    - seqdata:/data
+    ports:
+    - 80:80
+    - 5341:5341
+    environment:
+      ACCEPT_EULA: Y
+  oidc-server-mock:
+    image: ghcr.io/soluto/oidc-server-mock
+    ports:
+      - "4011:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      SERVER_OPTIONS_INLINE: |
+        {
+          "AccessTokenJwtType": "JWT",
+          "Discovery": {
+            "ShowKeySet": true
+          },
+          "Authentication": {
+            "CookieSameSiteMode": "Lax",
+            "CheckSessionCookieSameSiteMode": "Lax"
+          }
+        }
+      ACCOUNT_OPTIONS_INLINE: |
+        {
+          "AutomaticRedirectAfterSignOut": true
+        }
+      API_SCOPES_INLINE: |
+        [
+          {
+            "Name": "workshop"
+          },
+        ]
+      API_RESOURCES_INLINE: |
+        [
+          {
+            "Name": "workshop",
+            "Scopes": ["workshop"],
+            "UserClaims": [
+              "roles",
+              "name",
+              "title",
+              "given_name",
+              "aud",
+              "family_name",
+              "email"
+            ]
+          }
+        ]
+      USERS_CONFIGURATION_PATH: /tmp/config/users-config.json
+      CLIENTS_CONFIGURATION_PATH: /tmp/config/clients-config.json
+    volumes:
+      - .:/tmp/config:ro
+
+volumes:
+  azurite:
+  seqdata:
+
+networks:
+  proxy_net:
+    driver: bridge
+  default:
+    name: auth-net
