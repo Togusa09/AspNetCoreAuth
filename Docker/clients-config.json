@@ -13,6 +13,7 @@
       "email",
       "offline_access",
       "workshop",
+	  "workshop_api"
     ],
     "IdentityTokenLifetime": 120,
     "AccessTokenLifetime": 120,

@@ -1,4 +1,5 @@
-﻿@{
+﻿@using System.Security.Claims
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -17,5 +18,12 @@
     else
     {
         <h2>@(User.Identity.Name)</h2>
+
+        <ul>
+        @foreach (var claim in (User.Identity as ClaimsIdentity).Claims)
+        {
+            <li>@($"{claim.Type} - {claim.Value}")</li>
+        }
+        </ul>
     }
 </div>

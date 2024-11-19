@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
@@ -21,6 +22,7 @@ builder.Services.AddAuthentication(sharedOptions =>
         {
             return Task.CompletedTask;
         };
+        
     })
     .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, (options) =>
     {
@@ -34,10 +36,17 @@ builder.Services.AddAuthentication(sharedOptions =>
 
         options.Scope.Add("email");
         options.Scope.Add("workshop");
+        options.Scope.Add("workshop_api");
 
         options.TokenValidationParameters.NameClaimType = "name";
+        options.TokenValidationParameters.RoleClaimType = "role";
+        //options.GetClaimsFromUserInfoEndpoint = true;
 
         options.RequireHttpsMetadata = !builder.Environment.IsDevelopment();
+        
+        options.ClaimActions.MapJsonKey("craft", "craft");
+        options.ClaimActions.MapJsonKey("role", "role");
+
         options.Events.OnTokenValidated = (context) =>
         {
             Debug.WriteLine("Test");

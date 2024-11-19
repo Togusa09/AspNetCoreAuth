@@ -10,10 +10,20 @@
 		"ValueType": "string"
       },
       {
-        "Type": "roles",
-        "Value": "[\"Level6\"]",
+        "Type": "role",
+        "Value": "[\"Pilot\"]",
         "ValueType": "json"
-      }
+      },
+	  {
+        "Type": "craft",
+        "Value": "[\"Thunderbird 1\", \"Thunderbird 3\"]",
+        "ValueType": "json"
+      },
+	  {
+		"Type": "aud",
+		"Value": "[\"openid\",\"profile\",\"email\",\"offline_access\",\"workshop\",\"workshop_api\"]",
+		"ValueType": "json"
+	  },
     ]
   },
   {
@@ -27,8 +37,13 @@
 		"ValueType": "string"
       },
       {
-        "Type": "roles",
-        "Value": "[\"Level6\"]",
+        "Type": "role",
+        "Value": "[\"Pilot\"]",
+        "ValueType": "json"
+      },
+	  {
+        "Type": "craft",
+        "Value": "[\"Thunderbird 2\"]",
         "ValueType": "json"
       }
     ]
@@ -44,8 +59,13 @@
 		"ValueType": "string"
       },
       {
-        "Type": "roles",
-        "Value": "[\"Level6\"]",
+        "Type": "role",
+        "Value": "[\"Pilot\"]",
+        "ValueType": "json"
+      },
+	  {
+        "Type": "craft",
+        "Value": "[\"Thunderbird 1\", \"Thunderbird 3\"]",
         "ValueType": "json"
       }
     ]
@@ -61,13 +81,17 @@
 		"ValueType": "string"
       },
       {
-        "Type": "roles",
-        "Value": "[\"Level6\"]",
+        "Type": "role",
+        "Value": "[\"Pilot\"]",
+        "ValueType": "json"
+      },
+	  {
+        "Type": "craft",
+        "Value": "[\"Thunderbird 2\",\"Thunderbird 4\"]",
         "ValueType": "json"
       }
     ]
   },
-
   {
     "SubjectId": "5",
     "Username": "alan",
@@ -79,8 +103,30 @@
 		"ValueType": "string"
       },
       {
-        "Type": "roles",
-        "Value": "[\"Level6\"]",
+        "Type": "role",
+        "Value": "[\"Pilot\"]",
+        "ValueType": "json"
+      },
+	  {
+        "Type": "craft",
+        "Value": "[\"Thunderbird 3\", \"Thunderbird 5\"]",
+        "ValueType": "json"
+      }
+    ]
+  },
+  {
+    "SubjectId": "6",
+    "Username": "brains",
+    "Password": "pwd",
+    "Claims": [
+      {
+        "Type": "name",
+        "Value": "Brains",
+		"ValueType": "string"
+      },
+      {
+        "Type": "role",
+        "Value": "[\"Engineer\"]",
         "ValueType": "json"
       }
     ]

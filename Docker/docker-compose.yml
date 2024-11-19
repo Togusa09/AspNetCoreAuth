@@ -23,27 +23,28 @@ services:
       API_SCOPES_INLINE: |
         [
           {
-            "Name": "workshop"
+            "Name": "workshop_api"
           },
         ]
       API_RESOURCES_INLINE: |
         [
           {
             "Name": "workshop",
-            "Scopes": ["workshop"],
+            "Scopes": ["workshop_api"],
             "UserClaims": [
-              "roles",
               "title",
               "given_name",
               "aud",
               "family_name",
               "email",
-              "name",
+              "name"
             ]
           }
         ]
       USERS_CONFIGURATION_PATH: /tmp/config/users-config.json
       CLIENTS_CONFIGURATION_PATH: /tmp/config/clients-config.json
+      IDENTITY_RESOURCES_INLINE: | 
+        [ { "Name": "workshop", "ClaimTypes": ["craft", "role"] } ]
     volumes:
       - .:/tmp/config:ro
 
