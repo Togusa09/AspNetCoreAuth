@@ -1,0 +1,9 @@
+@host = localhost:7089
+
+###
+
+GET https://{{host}}/CustomAuthScheme/GetData
+
+###
+GET https://{{host}}/CustomAuthScheme/GetData?Custom-Auth-Token=OpenSesame
+Custom-Auth-Header: Please

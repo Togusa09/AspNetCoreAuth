@@ -1,12 +1,12 @@
 [
   {
     "SubjectId": "1",
-    "Username": "user1",
+    "Username": "scott",
     "Password": "pwd",
     "Claims": [
       {
         "Type": "name",
-        "Value": "OIDC User 1",
+        "Value": "Scott",
 		"ValueType": "string"
       },
       {
@@ -18,12 +18,64 @@
   },
   {
     "SubjectId": "2",
-    "Username": "user2",
+    "Username": "virgil",
     "Password": "pwd",
     "Claims": [
       {
         "Type": "name",
-        "Value": "OIDC User 2",
+        "Value": "Virgil",
+		"ValueType": "string"
+      },
+      {
+        "Type": "roles",
+        "Value": "[\"Level6\"]",
+        "ValueType": "json"
+      }
+    ]
+  },
+  {
+    "SubjectId": "3",
+    "Username": "john",
+    "Password": "pwd",
+    "Claims": [
+      {
+        "Type": "name",
+        "Value": "John",
+		"ValueType": "string"
+      },
+      {
+        "Type": "roles",
+        "Value": "[\"Level6\"]",
+        "ValueType": "json"
+      }
+    ]
+  },
+  {
+    "SubjectId": "4",
+    "Username": "gordon",
+    "Password": "pwd",
+    "Claims": [
+      {
+        "Type": "name",
+        "Value": "Gordon",
+		"ValueType": "string"
+      },
+      {
+        "Type": "roles",
+        "Value": "[\"Level6\"]",
+        "ValueType": "json"
+      }
+    ]
+  },
+
+  {
+    "SubjectId": "5",
+    "Username": "alan",
+    "Password": "pwd",
+    "Claims": [
+      {
+        "Type": "name",
+        "Value": "Alan",
 		"ValueType": "string"
       },
       {

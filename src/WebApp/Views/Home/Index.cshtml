@@ -9,15 +9,9 @@
     @if (!User.Identity!.IsAuthenticated)
     {
         <div style="display:flex; flex-direction:column" >
-            
-                <a class="text-dark" asp-area="" asp-controller="Login" asp-action="Login" asp-route-name="Scott">Login as Scott</a>
-
-                <a class="text-dark" asp-area="" asp-controller="Login" asp-action="Login" asp-route-name="Gordon">Login as Gordon</a>
-
-                <a class="text-dark" asp-area="" asp-controller="Login" asp-action="Login" asp-route-name="John">Login as John</a>
-       
-                <a class="text-dark" asp-area="" asp-controller="Login" asp-action="LoginOidc">Login with OIDC</a>
-   
+            <a class="text-dark" asp-area="" asp-controller="Login" asp-action="Login" asp-route-name="Wally">Login as Wally</a>
+            <a class="text-dark" asp-area="" asp-controller="Login" asp-action="Login" asp-route-name="Deke">Login as Deke</a>
+            <a class="text-dark" asp-area="" asp-controller="Login" asp-action="LoginOidc">Login with OIDC</a>
         </div>
     }
     else

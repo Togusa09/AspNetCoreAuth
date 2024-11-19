@@ -1,9 +1,8 @@
 using System.Diagnostics;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using WebApp.Authentication.CustomScheme;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +19,6 @@ builder.Services.AddAuthentication(sharedOptions =>
         //options.LogoutPath = "/Login/Logut";
         options.Events.OnValidatePrincipal = (context) =>
         {
-            //context.RejectPrincipal();
             return Task.CompletedTask;
         };
     })
@@ -45,6 +43,9 @@ builder.Services.AddAuthentication(sharedOptions =>
             Debug.WriteLine("Test");
             return Task.CompletedTask;
         };
+    })
+    .AddCustomAuth(CustomAuthSchemeDefaults.AuthenticationScheme, "Custom Auth", o =>
+    {
     });
 
 var app = builder.Build();
@@ -69,6 +70,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();
