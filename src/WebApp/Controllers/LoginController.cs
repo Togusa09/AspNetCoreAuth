@@ -8,13 +8,21 @@ namespace WebApp.Controllers;
 
 public class LoginController : Controller
 {
-    public async Task<IActionResult> Login(string name)
+    public async Task<IActionResult> Login(string name, string familyName)
     {
         // This example is performed by a trained stunt developer. Please do not try this at home.
         var identity = new ClaimsIdentity(
         [
-            new(ClaimTypes.Name, name)
+            new(ClaimTypes.Name, name),
+            new (ClaimTypes.Surname, familyName)
+
         ], CookieAuthenticationDefaults.AuthenticationScheme);
+
+        identity.AddClaims(
+        [
+            new Claim(ClaimTypes.Role, "Pilot"),
+            new Claim("craft", "Mercury")
+        ]);
 
         await HttpContext.SignInAsync(new ClaimsPrincipal(identity));
         return RedirectToAction("Index", "Home");

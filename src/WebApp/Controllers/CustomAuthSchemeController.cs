@@ -2,20 +2,24 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Authentication.CustomScheme;
 
-namespace WebApp.Controllers
+namespace WebApp.Controllers;
+
+public class CustomAuthSchemeController : Controller
 {
-    [Authorize(AuthenticationSchemes = CustomAuthSchemeDefaults.AuthenticationScheme)]
-    public class CustomAuthSchemeController : Controller
+    [AllowAnonymous]
+    public IActionResult Index()
     {
-        [Authorize(AuthenticationSchemes = CustomAuthSchemeDefaults.AuthenticationScheme)]
-        public IActionResult GetData()
+        return View();
+    }
+
+    [Authorize(AuthenticationSchemes = CustomAuthSchemeDefaults.AuthenticationScheme)]
+    public IActionResult GetData()
+    {
+        return Json(new
         {
-            return Json(new
-            {
-                Data1 = "asdasfsfdsd",
-                Data2 = "12e23rwefesf",
-                User = User.Identity!.Name
-            });
-        }
+            Data1 = "asdasfsfdsd",
+            Data2 = "12e23rwefesf",
+            User = User.Identity!.Name
+        });
     }
 }

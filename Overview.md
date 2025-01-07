@@ -4,13 +4,16 @@ Workshop to introduce basic and intermediate features of authentication and auth
 - [[Cookie Based Authentication]]
 	- Events
 - Sharing cookies between apps?
-- Connect to OIDC provide (using docker container)
+- [[OIDC Setup]]
 	- Events
 - Claims Identity and Role mapping
+	- [[1. Claims]]
+	- [[3. Roles]]
 - ClaimsTransformation?
-- Custom auth scheme (AuthenticationHandler) (from header/query)
+- Auth Attributes [[2. Attributes]]
+- [[Custom Authentication Scheme Setup]]
 	- Configuration of custom schemes
-- Mocking authentication for integration tests
+- [[Mock Auth Handler]]
 -  Custom Policies
 	- Requiring roles, schemes, custom assertions
 - Custom AuthorizationHandler

@@ -1,0 +1,58 @@
+https://github.com/dotnet/AspNetCore.Docs.Samples/blob/main/test/integration-tests/8.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs#L105-L117
+
+## Mocking auth handler to provider user data
+1. Create `TestAuthExtensions.cs` and add the following class
+	```csharp
+	public static class TestAuthExtensions
+	{
+	    public static AuthenticationBuilder AddTestAuth(this IServiceCollection services, string name, IEnumerable<Claim> claims, string scheme = "TestScheme")
+	    {
+	        var auth = services
+	            .AddAuthentication(defaultScheme: scheme)
+	            .AddScheme<TestAuthHandlerOptions, TestAuthHandler>(
+	                scheme, options =>
+	                {
+	                    options.UserName = name;
+	                    options.Claims = claims;
+	                });
+	        
+	        return auth;
+	    }
+	}
+	```
+## Replacing named scheme handler for tests
+
+Normally auth handler resolution will rely on the default schemes, however sometimes a policy or `AuthorizeAttribute` will specify a scheme. Strictly speaking, ASP.net core does not allow schemes to be overridden or removed as part of the test initialization, as the relevant collections in the `AuthenticationSchemeProvider` and `AuthenticationSchemeOptions` are private.
+However, the implementation of the `GetSchemeAsync` method from `AuthenticationSchemeProvider` can be overridden, allowing us to inject our own logic for which Authentication Scheme Handler to resolve. The guide below shows how to return a fixed identity provider for when a specific scheme needs to be overridden for a test.
+
+1. Create `TestSchemeProvider.cs` and add the following code
+	```csharp
+	public class TestSchemeProvider : AuthenticationSchemeProvider
+	{
+	    public TestSchemeProvider(IOptions<AuthenticationOptions> options)
+	        : base(options)
+	    {
+	    }
+	
+	    protected TestSchemeProvider(
+	        IOptions<AuthenticationOptions> options,
+	        IDictionary<string, AuthenticationScheme> schemes
+	    )
+	        : base(options, schemes)
+	    {
+	    }
+	
+	    public override Task<AuthenticationScheme?> GetSchemeAsync(string name) =>
+	        Task.FromResult<AuthenticationScheme?>(new AuthenticationScheme(
+	            name,
+	            name,
+	            typeof(TestAuthHandler)));
+	}
+	```
+1. Add the following to `TestAuthExtensions.cs` to register the test scheme provider
+	```csharp
+	public static IServiceCollection OverrideAuthSchemeProvider(this IServiceCollection services)
+	    {
+	        return services.AddTransient<IAuthenticationSchemeProvider, TestSchemeProvider>();
+	    }
+	```

@@ -68,7 +68,6 @@ https://learn.microsoft.com/en-us/aspnet/core/security/authentication/cookie?vie
 ## Cookie Auth Events
 https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationevents?view=aspnetcore-8.0
 
-
 | Callback                 | Description                                                              |
 | ------------------------ | ------------------------------------------------------------------------ |
 | OnCheckSlidingExpiration | Invoked to check if the cookie should be renewed.                        |

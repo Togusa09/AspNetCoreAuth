@@ -1,7 +1,6 @@
 ﻿using System.Security.Claims;
 using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 
 namespace WebApp.Authentication.CustomScheme;
@@ -56,9 +55,11 @@ public class CustomAuthSchemeHandler(IOptionsMonitor<CustomAuthSchemeOptions> op
 
 public static class CustomAuthExtensions
 {
-    public static AuthenticationBuilder AddCustomAuth(this AuthenticationBuilder builder, string authenticationScheme,
-                                                      string? displayName,
-                                                      Action<CustomAuthSchemeOptions> configureOptions)
+    public static AuthenticationBuilder AddCustomAuth(
+        this AuthenticationBuilder builder,
+        string authenticationScheme,
+        string? displayName,
+        Action<CustomAuthSchemeOptions> configureOptions)
     {
         builder.Services
             .AddOptions<CustomAuthSchemeOptions>(authenticationScheme)

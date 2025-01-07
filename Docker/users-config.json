@@ -9,6 +9,11 @@
         "Value": "Scott",
 		"ValueType": "string"
       },
+	  {
+        "Type": "family_name",
+        "Value": "Tracy",
+		"ValueType": "string"
+      },
       {
         "Type": "role",
         "Value": "[\"Pilot\"]",
@@ -36,6 +41,11 @@
         "Value": "Virgil",
 		"ValueType": "string"
       },
+	  {
+        "Type": "family_name",
+        "Value": "Tracy",
+		"ValueType": "string"
+      },
       {
         "Type": "role",
         "Value": "[\"Pilot\"]",
@@ -56,6 +66,11 @@
       {
         "Type": "name",
         "Value": "John",
+		"ValueType": "string"
+      },
+	  {
+        "Type": "family_name",
+        "Value": "Tracy",
 		"ValueType": "string"
       },
       {
@@ -80,6 +95,11 @@
         "Value": "Gordon",
 		"ValueType": "string"
       },
+	  {
+        "Type": "family_name",
+        "Value": "Tracy",
+		"ValueType": "string"
+      },
       {
         "Type": "role",
         "Value": "[\"Pilot\"]",
@@ -102,6 +122,11 @@
         "Value": "Alan",
 		"ValueType": "string"
       },
+	  {
+        "Type": "family_name",
+        "Value": "Tracy",
+		"ValueType": "string"
+      },
       {
         "Type": "role",
         "Value": "[\"Pilot\"]",
@@ -121,12 +146,39 @@
     "Claims": [
       {
         "Type": "name",
-        "Value": "Brains",
+        "Value": "Hiram",
+		"ValueType": "string"
+      },
+	  {
+        "Type": "family_name",
+        "Value": "Hackenbacker",
 		"ValueType": "string"
       },
       {
         "Type": "role",
         "Value": "[\"Engineer\"]",
+        "ValueType": "json"
+      }
+    ]
+  },
+  {
+    "SubjectId": "7",
+    "Username": "grandma",
+    "Password": "pwd",
+    "Claims": [
+      {
+        "Type": "name",
+        "Value": "Grandma",
+		"ValueType": "string"
+      },
+	  {
+        "Type": "family_name",
+        "Value": "Tracy",
+		"ValueType": "string"
+      },
+      {
+        "Type": "role",
+        "Value": "[\"Cook\"]",
         "ValueType": "json"
       }
     ]
