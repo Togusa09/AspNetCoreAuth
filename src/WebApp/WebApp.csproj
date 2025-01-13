@@ -11,4 +11,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Hangar\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\CustomAuthSchemeClient.js" />
+  </ItemGroup>
+
 </Project>

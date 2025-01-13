@@ -1,0 +1,58 @@
+﻿@section Scripts
+{
+    <script type="module">
+        async function makeFetch() {
+            const headerName = document.getElementById("header-name").value;
+            const headerval = document.getElementById("header-val").value;
+
+            var headers = {};
+            headers[headerName] = headerval;
+
+            const request1 = new Request("/CustomAuthScheme/GetData", {
+                method: "GET",
+                headers: headers
+            });
+
+            const response = await fetch(request1);
+            console.log(response.status);
+            document.getElementById("response-status").innerHTML = response.status;
+            // To extract data, use await response.json()
+            document.getElementById("response-content").innerHTML = await response.text();
+        }
+        
+        async function getCraft(){
+            const launchSite = document.getElementById("launch-site").value;
+            const request = new Request(`AuthPolicy/LaunchSite/${launchSite}`, {
+                method: "GET"
+            });
+
+            const response = await fetch(request);
+
+            document.getElementById("response-status").innerHTML = response.status;
+            document.getElementById("response-content").innerHTML = await response.text();
+        }
+
+        document.querySelector('#get-craft').addEventListener('click', getCraft);
+    </script>
+}
+
+@{
+    <label for="launch-site">
+        Launch Site
+        <select id="launch-site">
+            <option value="CapeCanaveral">Cape Canaveral</option>
+            <option value="KennedySpaceCentre">Kennedy Space Centre</option>
+            <option value="TracyIsland">Tracy Island</option>
+        </select>
+    </label>
+
+    <button id="get-craft">
+        Get Craft
+    </button>
+
+    <div>
+        Response Status:
+        <span id="response-status"></span>
+    </div>
+    <div id="response-content"></div>
+}

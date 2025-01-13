@@ -1,32 +1,38 @@
-using System.Diagnostics;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using Microsoft.IdentityModel.Tokens;
 using WebApp.Authentication.CustomScheme;
+using WebApp.Authorisation;
+using WebApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddProblemDetails();
 
 // Add services to the container.
-builder.Services.AddControllersWithViews(); 
+builder.Services.AddControllersWithViews();
 
-builder.Services.AddAuthentication(sharedOptions =>
+    builder.Services.AddAuthentication(sharedOptions =>
     {
         sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     }).AddCookie(options =>
     {
         options.Cookie.Name = "WorkshopAuthCookie";
+
         //options.LoginPath = "/Login/Login";
-        //options.LogoutPath = "/Login/Logut";
-        options.Events.OnValidatePrincipal = (context) =>
+        //options.LogoutPath = "/Login/Logout";
+        //options.Events.OnValidatePrincipal = (context) =>
+        //{
+        //    return Task.CompletedTask;
+        //};
+        options.Events.OnRedirectToAccessDenied = context =>
         {
+            context.Response.StatusCode = 403;
             return Task.CompletedTask;
         };
-        
+
     })
     .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, (options) =>
     {
@@ -93,19 +99,22 @@ builder.Services.AddAuthentication(sharedOptions =>
         //        return Task.CompletedTask;
         //    }
         //};
-    }); ;
+    });
+
+builder.Services.AddSingleton<IAuthorizationHandler, IsCertifiedForCraftAuthorizationHandler>();
 
 builder.Services.AddAuthorization(options =>
 {
     // Are a member of the Tracy family if surname is Tracy
-    options.AddPolicy("Tracy Family", policy =>
+    options.AddPolicy("TracyFamily", policy =>
         policy.RequireClaim(ClaimTypes.Surname, "Tracy"));
 
     // Are an astronaut if trained to fly a spacecraft
     options.AddPolicy("Astronaut", policy =>
     {
         policy.RequireClaim(ClaimTypes.Role, "Pilot");
-        policy.RequireClaim("craft", "Mercury", "Thunderbird 1", "Thunderbird 3", "Thunderbird 5");
+        policy.RequireClaim("craft", Craft.Mercury.Name, Craft.ThunderBird1.Name, Craft.ThunderBird3.Name,
+            Craft.ThunderBird5.Name);
         //policy.AddRequirements()
     });
 });
@@ -115,13 +124,23 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    //app.UseExceptionHandler("/Home/Error");
+    
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+else
+{
+    
+   // app.UseDeveloperExceptionPage();
+}
+
 
 app.UseHttpsRedirection();
 app.UseRouting();
+
+app.UseExceptionHandler();
+app.UseStatusCodePages();
 
 app.UseAuthentication();
 app.UseAuthorization();

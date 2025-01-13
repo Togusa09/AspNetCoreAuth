@@ -1,0 +1,112 @@
+﻿@section Scripts
+{
+    <script type="module">
+        //let craftList = [];
+
+        async function makeFetch() {
+            const headerName = document.getElementById("header-name").value;
+            const headerval = document.getElementById("header-val").value;
+
+            var headers = {};
+            headers[headerName] = headerval;
+
+            const request1 = new Request("/CustomAuthScheme/GetData", {
+                method: "GET",
+                headers: headers
+            });
+
+            const response = await fetch(request1);
+            console.log(response.status);
+            document.getElementById("response-status").innerHTML = response.status;
+            // To extract data, use await response.json()
+            document.getElementById("response-content").innerHTML = await response.text();
+        }
+
+        async function getCraft(){
+            const launchSite = document.getElementById("launch-site").value;
+            const request = new Request(`AuthPolicy/LaunchSite/${launchSite}`, {
+                method: "GET"
+            });
+
+            const response = await fetch(request);
+
+            const selectTag = document.getElementById("craft-list")
+            selectTag.innerHTML = null;
+
+            document.getElementById("response-status").innerHTML = response.status;
+            
+            const returnedCraft = await response.json();
+            document.getElementById("response-content").innerHTML = JSON.stringify(returnedCraft);
+            
+            if (response.ok){
+                returnedCraft.map( (craft, i) => {
+                    let opt = document.createElement("option");
+                    opt.value = craft.name; // the index
+                    opt.innerHTML = craft.name;
+                    selectTag.append(opt);
+                });
+            }
+            else{
+                let opt = document.createElement("option");
+                opt.innerHTML = "N/A";
+                selectTag.append(opt);
+            }
+        }
+        
+        async function getCraftDetail(){
+            const craft = document.getElementById("craft-list").value;
+            const request = new Request(`ResourceAuthPolicy/Craft/${craft}`, {
+                method: "GET"
+            });
+
+            const response = await fetch(request);
+
+            document.getElementById("response-status").innerHTML = response.status;
+            document.getElementById("response-content").innerHTML = await response.text();
+        }
+
+        document.querySelector('#get-craft').addEventListener('click', getCraft);
+        document.querySelector('#get-craft-detail').addEventListener('click', getCraftDetail);
+    
+    </script>
+}
+
+@{
+    <form>
+        <div class="mb-3">
+            <label for="launch-site" class="col-sm-2 col-form-label">Launch Site</label>
+            <select id="launch-site" class="form-select">
+                <option value="CapeCanaveral">Cape Canaveral</option>
+                <option value="KennedySpaceCentre">Kennedy Space Centre</option>
+                <option value="TracyIsland">Tracy Island</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <button id="get-craft" class="btn btn-primary" type="button">Get Craft</button>
+        </div>
+
+        <div class="mb-3">
+            <label for="craft-list" class="col-sm-2 col-form-label">Craft Lift</label>
+            <select id="craft-list" class="form-select">
+                <option>N/A</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <button id="get-craft-detail" class="btn btn-primary" type="button">Get Craft Detail</button>
+        </div>
+    </form>
+
+    <div class="card">
+        <div class="card-body">
+            <div>
+                Response Status:
+                <span id="response-status"></span>
+            </div>
+            <div id="response-content"></div>
+        </div>
+    </div>
+
+    
+}
