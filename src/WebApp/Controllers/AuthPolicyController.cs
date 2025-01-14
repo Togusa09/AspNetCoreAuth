@@ -12,7 +12,6 @@ namespace WebApp.Controllers
             return View();
         }
 
-        [Authorize(Policy = "Astronaut")]
         [Authorize(Policy = "TracyFamily")]
         [HttpGet("AuthPolicy/LaunchSite/TracyIsland")]
         public IActionResult TracyIslandLaunchSite()

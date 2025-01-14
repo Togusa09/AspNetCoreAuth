@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Models;
 
 namespace WebApp.Controllers;
 
@@ -21,7 +22,7 @@ public class LoginController : Controller
         identity.AddClaims(
         [
             new Claim(ClaimTypes.Role, "Pilot"),
-            new Claim("craft", "Mercury")
+            new Claim("craft", Craft.Mercury.Name)
         ]);
 
         await HttpContext.SignInAsync(new ClaimsPrincipal(identity));

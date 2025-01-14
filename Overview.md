@@ -1,19 +1,19 @@
 Workshop to introduce basic and intermediate features of authentication and authorisation in ASP.net core.
 
 ## Topics
-- [[Cookie Based Authentication]]
+- [[1. Cookie Based Authentication]]
 	- Events
 - Sharing cookies between apps?
-- [[OIDC Setup]]
+- [[1. OIDC Setup]]
 	- Events
 - Claims Identity and Role mapping
 	- [[1. Claims]]
 	- [[3. Roles]]
 - ClaimsTransformation?
 - Auth Attributes [[2. Attributes]]
-- [[Custom Authentication Scheme Setup]]
+- [[1. Custom Authentication Scheme Setup]]
 	- Configuration of custom schemes
-- [[Mock Auth Handler]]
+- [[1. Mock Auth Handler]]
 -  Custom Policies
 	- Requiring roles, schemes, custom assertions
 - Custom AuthorizationHandler

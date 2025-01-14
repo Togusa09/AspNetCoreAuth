@@ -4,23 +4,29 @@
 }
 
 @{
-    <label for="header-name">
-        Header Name
-        <input type="text" id="header-name" name="header-name" value="Custom-Auth-Header"/>
-    </label>
+    <form>
+        <div class="mb-3">
+            <label for="header-name" class="col-sm-2 col-form-label">Header Name</label>
+            <input type="text" id="header-name" name="header-name" value="Custom-Auth-Header" />
+        </div>
+        
+        <div class="mb-3">
+            <label for="header-val" class="col-sm-2 col-form-label">Header Value</label>
+            <input type="text" id="header-val" name="header-val" value="Please" />
+        </div>
 
-    <label for="header-val">
-        Header Value
-        <input type="text" id="header-val" name="header-val" value="Please"/>
-    </label>
+        <div class="mb-3">
+            <button id="make-fetch" class="btn btn-primary" type="button">Send Request</button>
+        </div>
+    </form>
 
-    <button id="make-fetch">
-        Send Request
-    </button>
-
-    <div>
-        Response Status:
-        <span id="response-status"></span>
+    <div class="card">
+        <div class="card-body">
+            <div>
+                Response Status:
+                <span id="response-status"></span>
+            </div>
+            <div id="response-content"></div>
+        </div>
     </div>
-    <div id="response-content"></div>
 }

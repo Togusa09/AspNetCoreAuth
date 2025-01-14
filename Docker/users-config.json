@@ -5,30 +5,30 @@
     "Password": "pwd",
     "Claims": [
       {
-        "Type": "name",
+        "Type": "given_name",
         "Value": "Scott",
-		"ValueType": "string"
+        "ValueType": "string"
       },
-	  {
+      {
         "Type": "family_name",
         "Value": "Tracy",
-		"ValueType": "string"
+        "ValueType": "string"
       },
       {
         "Type": "role",
         "Value": "[\"Pilot\"]",
         "ValueType": "json"
       },
-	  {
+      {
         "Type": "craft",
         "Value": "[\"Thunderbird 1\", \"Thunderbird 3\"]",
         "ValueType": "json"
       },
-	  {
-		"Type": "aud",
-		"Value": "[\"openid\",\"profile\",\"email\",\"offline_access\",\"workshop\",\"workshop_api\"]",
-		"ValueType": "json"
-	  },
+      {
+        "Type": "aud",
+        "Value": "[\"openid\",\"profile\",\"email\",\"offline_access\",\"workshop\",\"workshop_api\"]",
+        "ValueType": "json"
+      }
     ]
   },
   {
@@ -37,21 +37,21 @@
     "Password": "pwd",
     "Claims": [
       {
-        "Type": "name",
+        "Type": "given_name",
         "Value": "Virgil",
-		"ValueType": "string"
+        "ValueType": "string"
       },
-	  {
+      {
         "Type": "family_name",
         "Value": "Tracy",
-		"ValueType": "string"
+        "ValueType": "string"
       },
       {
         "Type": "role",
         "Value": "[\"Pilot\"]",
         "ValueType": "json"
       },
-	  {
+      {
         "Type": "craft",
         "Value": "[\"Thunderbird 2\"]",
         "ValueType": "json"
@@ -64,21 +64,21 @@
     "Password": "pwd",
     "Claims": [
       {
-        "Type": "name",
+        "Type": "given_name",
         "Value": "John",
-		"ValueType": "string"
+        "ValueType": "string"
       },
-	  {
+      {
         "Type": "family_name",
         "Value": "Tracy",
-		"ValueType": "string"
+        "ValueType": "string"
       },
       {
         "Type": "role",
         "Value": "[\"Pilot\"]",
         "ValueType": "json"
       },
-	  {
+      {
         "Type": "craft",
         "Value": "[\"Thunderbird 1\", \"Thunderbird 3\"]",
         "ValueType": "json"
@@ -91,21 +91,21 @@
     "Password": "pwd",
     "Claims": [
       {
-        "Type": "name",
+        "Type": "given_name",
         "Value": "Gordon",
-		"ValueType": "string"
+        "ValueType": "string"
       },
-	  {
+      {
         "Type": "family_name",
         "Value": "Tracy",
-		"ValueType": "string"
+        "ValueType": "string"
       },
       {
         "Type": "role",
         "Value": "[\"Pilot\"]",
         "ValueType": "json"
       },
-	  {
+      {
         "Type": "craft",
         "Value": "[\"Thunderbird 2\",\"Thunderbird 4\"]",
         "ValueType": "json"
@@ -118,21 +118,21 @@
     "Password": "pwd",
     "Claims": [
       {
-        "Type": "name",
+        "Type": "given_name",
         "Value": "Alan",
-		"ValueType": "string"
+        "ValueType": "string"
       },
-	  {
+      {
         "Type": "family_name",
         "Value": "Tracy",
-		"ValueType": "string"
+        "ValueType": "string"
       },
       {
         "Type": "role",
         "Value": "[\"Pilot\"]",
         "ValueType": "json"
       },
-	  {
+      {
         "Type": "craft",
         "Value": "[\"Thunderbird 3\", \"Thunderbird 5\"]",
         "ValueType": "json"
@@ -145,14 +145,14 @@
     "Password": "pwd",
     "Claims": [
       {
-        "Type": "name",
+        "Type": "given_name",
         "Value": "Hiram",
-		"ValueType": "string"
+        "ValueType": "string"
       },
-	  {
+      {
         "Type": "family_name",
         "Value": "Hackenbacker",
-		"ValueType": "string"
+        "ValueType": "string"
       },
       {
         "Type": "role",
@@ -167,14 +167,14 @@
     "Password": "pwd",
     "Claims": [
       {
-        "Type": "name",
+        "Type": "given_name",
         "Value": "Grandma",
-		"ValueType": "string"
+        "ValueType": "string"
       },
-	  {
+      {
         "Type": "family_name",
         "Value": "Tracy",
-		"ValueType": "string"
+        "ValueType": "string"
       },
       {
         "Type": "role",

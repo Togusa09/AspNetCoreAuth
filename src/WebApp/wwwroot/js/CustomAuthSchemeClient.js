@@ -1,16 +1,11 @@
-﻿async function makeFetch() {
+﻿import { getCustomAuthData } from "/js/ApiCalls.js";
+
+async function makeFetch() {
     const headerName = document.getElementById("header-name").value;
-    const headerval = document.getElementById("header-val").value;
+    const headerVal = document.getElementById("header-val").value;
 
-    var headers = {};
-    headers[headerName] = headerval;
+    const response = await getCustomAuthData(headerName, headerVal);
 
-    const request1 = new Request("/CustomAuthScheme/GetData", {
-        method: "GET",
-        headers: headers
-    });
-
-    const response = await fetch(request1);
     console.log(response.status);
     document.getElementById("response-status").innerHTML = response.status;
     // To extract data, use await response.json()

@@ -1,8 +1,10 @@
+using System.Diagnostics;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using WebApp.Authentication.CustomScheme;
 using WebApp.Authorisation;
@@ -11,28 +13,20 @@ using WebApp.Models;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddProblemDetails();
 
-// Add services to the container.
+
 builder.Services.AddControllersWithViews();
 
-    builder.Services.AddAuthentication(sharedOptions =>
+builder.Services.AddAuthentication(sharedOptions =>
     {
         sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     }).AddCookie(options =>
     {
         options.Cookie.Name = "WorkshopAuthCookie";
-
-        //options.LoginPath = "/Login/Login";
-        //options.LogoutPath = "/Login/Logout";
-        //options.Events.OnValidatePrincipal = (context) =>
-        //{
-        //    return Task.CompletedTask;
-        //};
         options.Events.OnRedirectToAccessDenied = context =>
         {
             context.Response.StatusCode = 403;
             return Task.CompletedTask;
         };
-
     })
     .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, (options) =>
     {
@@ -55,21 +49,17 @@ builder.Services.AddControllersWithViews();
 
         options.RequireHttpsMetadata = !builder.Environment.IsDevelopment();
 
-        //options.ClaimActions.MapJsonKey(ClaimTypes.Role, "role");
         options.ClaimActions.MapJsonKey("craft", "craft");
+
+        var test = JsonWebTokenHandler.DefaultInboundClaimTypeMap;
 
         options.Events.OnTokenValidated = context =>
         {
             if (context.Principal is not { Identity: ClaimsIdentity claimsIdentity })
             {
-                //Log.Warning("No claims identity found after token validation");
+                Debug.WriteLine("No claims identity found after token validation");
                 return Task.CompletedTask;
             }
-
-            //claimsIdentity.AddClaims(
-            //[
-            //    new Claim("AddedOIDCClaim", "ClaimValue")
-            //]);
 
             return Task.CompletedTask;
         };
@@ -101,22 +91,31 @@ builder.Services.AddControllersWithViews();
         //};
     });
 
-builder.Services.AddSingleton<IAuthorizationHandler, IsCertifiedForCraftAuthorizationHandler>();
+builder.Services.AddSingleton(Craft.AllCraft);
+
+builder.Services.AddSingleton<IAuthorizationHandler, IsTracyFamilyAuthorizationHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, IsAstronautAuthorizationHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, IsCertifiedForCraftAuthorizationResourceHandler>();
 
 builder.Services.AddAuthorization(options =>
 {
     // Are a member of the Tracy family if surname is Tracy
     options.AddPolicy("TracyFamily", policy =>
-        policy.RequireClaim(ClaimTypes.Surname, "Tracy"));
+        //policy.RequireClaim(ClaimTypes.Surname, "Tracy")
+        policy.AddRequirements(new IsTracyFamilyRequirement())
+    );
 
     // Are an astronaut if trained to fly a spacecraft
     options.AddPolicy("Astronaut", policy =>
     {
-        policy.RequireClaim(ClaimTypes.Role, "Pilot");
-        policy.RequireClaim("craft", Craft.Mercury.Name, Craft.ThunderBird1.Name, Craft.ThunderBird3.Name,
-            Craft.ThunderBird5.Name);
-        //policy.AddRequirements()
+        //policy.RequireClaim(ClaimTypes.Role, "Pilot");
+        //policy.RequireClaim("craft", Craft.Mercury.Name, Craft.ThunderBird1.Name, Craft.ThunderBird3.Name,
+        //    Craft.ThunderBird5.Name);
+        policy.AddRequirements(new IsAstronautRequirement());
     });
+
+    options.AddPolicy("IsCertifiedForCraft",
+        policy => { policy.AddRequirements(new IsCertifiedForCraftRequirement()); });
 });
 
 var app = builder.Build();
@@ -125,16 +124,10 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     //app.UseExceptionHandler("/Home/Error");
-    
+
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-else
-{
-    
-   // app.UseDeveloperExceptionPage();
-}
-
 
 app.UseHttpsRedirection();
 app.UseRouting();
@@ -148,10 +141,13 @@ app.UseAuthorization();
 app.MapStaticAssets();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 app.Run();
 
-public partial class Program { }
+// Essentially just a marker class so that the integration tests know what to hook into
+public partial class Program
+{
+}

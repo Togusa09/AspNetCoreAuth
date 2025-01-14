@@ -3,7 +3,9 @@ using WebApp.Models;
 
 namespace WebApp.Authorisation
 {
-    public class IsCertifiedForCraftAuthorizationHandler :
+    public class IsCertifiedForCraftRequirement : IAuthorizationRequirement { }
+
+    public class IsCertifiedForCraftAuthorizationResourceHandler :
         AuthorizationHandler<IsCertifiedForCraftRequirement, Craft>
     {
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
@@ -18,6 +20,4 @@ namespace WebApp.Authorisation
             return Task.CompletedTask;
         }
     }
-
-    public class IsCertifiedForCraftRequirement : IAuthorizationRequirement { }
 }

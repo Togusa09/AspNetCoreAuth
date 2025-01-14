@@ -37,7 +37,8 @@ services:
               "aud",
               "family_name",
               "email",
-              "name"
+              "name",
+              "preferred_username"
             ]
           }
         ]

@@ -5,7 +5,10 @@ using WebApp.Models;
 
 namespace WebApp.Controllers
 {
-    public class ResourceAuthPolicyController(IAuthorizationService authorizationService) : Controller
+    public class ResourceAuthPolicyController(
+        IAuthorizationService authorizationService,
+        Craft[] allCraft
+        ) : Controller
     {
         [AllowAnonymous]
         public IActionResult Index()
@@ -13,20 +16,27 @@ namespace WebApp.Controllers
             return View();
         }
 
-        //[Authorize(Policy = "Astronaut")]
         [AllowAnonymous]
+        //[Authorize(Policy = "IsCertifiedForCraft")]
         [HttpGet("ResourceAuthPolicy/Craft/{craftName}")]
         public async Task<IActionResult> GetCraft(string craftName)
         {
-            var authorizationResult = await authorizationService
-                .AuthorizeAsync(User, new Craft(craftName), new IsCertifiedForCraftRequirement());
-
-            if (authorizationResult.Succeeded)
+            var selectedCraft = allCraft.FirstOrDefault(c => c.Name == craftName);
+            if (selectedCraft == null)
             {
-                return Json(new Craft(craftName));
+                return NotFound();
             }
 
-            return Forbid();
+            var authorizationResult = await authorizationService
+                .AuthorizeAsync(User, selectedCraft, new IsCertifiedForCraftRequirement());
+
+            if (!authorizationResult.Succeeded)
+            {
+                return Forbid();
+            }
+
+            return Json(selectedCraft);
+
         }
     }
 }
