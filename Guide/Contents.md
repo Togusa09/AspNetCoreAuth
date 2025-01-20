@@ -5,9 +5,9 @@ toc: true
 ## Contents
 
 [[Initial setup]]
-[[1. Cookie Based Authentication]]
-[[1. OIDC Setup]]
-[[1. Claims]]
-[[1. Custom Authentication Scheme Setup]]
-[[1. Mock Auth Handler]]
-[[1. Policies]]
+[[1. Cookie Based Authentication|Cookie Auth]]
+[[1. Claims|Claims]]
+[[1. OIDC Setup|OIDC Setup]]
+[[1. Custom Authentication Scheme Setup|Custom Auth Schemes]]
+[[1. Mock Auth Handler|Mocking Auth Handlers]]
+[[1. Policies|Policies]]

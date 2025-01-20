@@ -19,11 +19,11 @@ public class LoginController : Controller
 
         ], CookieAuthenticationDefaults.AuthenticationScheme);
 
-        //identity.AddClaims(
-        //[
-        //    new Claim(ClaimTypes.Role, "Pilot"),
-        //    new Claim("craft", Craft.Mercury.Name)
-        //]);
+        identity.AddClaims(
+        [
+            new Claim(ClaimTypes.Role, "Pilot"),
+            new Claim("craft", Craft.Mercury.Name)
+        ]);
 
         await HttpContext.SignInAsync(new ClaimsPrincipal(identity));
         return RedirectToAction("Index", "Home");

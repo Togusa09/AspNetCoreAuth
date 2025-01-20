@@ -10,25 +10,22 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
+            // View should already exist in workshop assets
             return View();
         }
 
-        // Get User claims
-
-        // Anonymous method
         [AllowAnonymous]
-        [HttpGet("NoAuth")]
+        [HttpGet("UserInfo")]
         public IActionResult TestAnonymous()
         {
-            return OkResponse();
+            return OkResponse("Get User Info");
         }
 
-        // Authenticated method
         [Authorize]
-        [HttpGet("Auth")]
-        public IActionResult TestAuthenticated()
+        [HttpGet("TestAuth")]
+        public IActionResult TestAuth()
         {
-            return OkResponse();
+            return OkResponse("Test Auth");
         }
 
         // Role authorisation
@@ -37,23 +34,25 @@ namespace WebApp.Controllers
         [HttpGet("IsInRole/Pilot")]
         public IActionResult TestPilot()
         {
-            return OkResponse();
+            return OkResponse("Pilot Role");
         }
 
         [Authorize(Roles = "Engineer")]
         [HttpGet("IsInRole/Engineer")]
         public IActionResult TestEngineer()
         {
-            return OkResponse();
+            return OkResponse("Engineer Role");
         }
 
-        private IActionResult OkResponse()
+        private IActionResult OkResponse(string action)
         {
             return Ok(new
             {
                 Name = User.Identity?.Name ?? "Anonymous",
+                Action = action,
                 AuthenticationType = User.Identity?.AuthenticationType ?? "None",
                 IsAuthenticated = User.Identity?.IsAuthenticated ?? false,
+                Claims = User.Claims.Select(x => new {x.Type, x.Value})
             });
         }
     }

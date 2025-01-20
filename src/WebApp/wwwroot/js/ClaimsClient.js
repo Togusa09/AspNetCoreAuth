@@ -10,17 +10,22 @@ async function get(path) {
 async function displayResponse(response) {
     console.log(response.status);
     document.getElementById("response-status").innerHTML = response.status;
-    // To extract data, use await response.json()
-    document.getElementById("response-content").innerHTML = await response.text();
+    document.getElementById("response-content").innerHTML = null;
+
+    try {
+        var data = await response.json();
+        document.getElementById("response-content").innerHTML = JSON.stringify(data, null, 4).trim();
+    } catch {
+        
+    }
 }
 
 async function getNoAuth() {
-    const response = await get(`Claims/NoAuth`);
+    const response = await get(`Claims/UserInfo`);
     displayResponse(response);
 }
-
 async function getAuth() {
-    const response = await get(`Claims/Auth`);
+    const response = await get(`Claims/TestAuth`);
     displayResponse(response);
 }
 

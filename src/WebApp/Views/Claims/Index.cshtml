@@ -4,28 +4,28 @@
 }
 
 @{
-    <form>
-        <div class="mb-3">
-            <button id="get-no-auth" class="btn btn-primary" type="button">No Auth</button>
+    <form class="row g-3">
+        <div class="col-auto">
+            <button id="get-no-auth" class="btn btn-primary mb-3" type="button">Get User Info</button>
         </div>
-        <div class="mb-3">
-            <button id="get-auth" class="btn btn-primary" type="button">Auth</button>
+        <div class="col-auto">
+            <button id="get-auth" class="btn btn-primary mb-3" type="button">Get Authed User Info</button>
         </div>
-        <div class="mb-3">
-            <button id="get-pilot" class="btn btn-primary" type="button">Test Pilot</button>
+        <div class="col-auto">
+            <button id="get-pilot" class="btn btn-primary mb-3" type="button">Test Pilot Role</button>
         </div>
-        <div class="mb-3">
-            <button id="get-engineer" class="btn btn-primary" type="button">Test Engineer</button>
+        <div class="col-auto">
+            <button id="get-engineer" class="btn btn-primary mb-3" type="button">Test Engineer Role</button>
         </div>
     </form>
 
-    <div class="card">
+    <div class="card row">
         <div class="card-body">
             <div>
                 Response Status:
                 <span id="response-status"></span>
             </div>
-            <div id="response-content"></div>
+            <pre><code id="response-content"></code></pre>
         </div>
     </div>
 }
