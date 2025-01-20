@@ -7,15 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\ClaimsClient.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Hangar\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <None Include="wwwroot\js\ClaimsClient.js" />
     <None Include="wwwroot\js\CustomAuthSchemeClient.js" />
   </ItemGroup>
 

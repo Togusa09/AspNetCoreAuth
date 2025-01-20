@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Net;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -22,9 +23,17 @@ builder.Services.AddAuthentication(sharedOptions =>
     }).AddCookie(options =>
     {
         options.Cookie.Name = "WorkshopAuthCookie";
+        // For these examples we just want to return error responses instead of redirecting
         options.Events.OnRedirectToAccessDenied = context =>
         {
-            context.Response.StatusCode = 403;
+            context.Response.Headers["Location"] = context.RedirectUri;
+            context.Response.StatusCode = StatusCodes.Status403Forbidden;
+            return Task.CompletedTask;
+        };
+        options.Events.OnRedirectToLogin = context =>
+        {
+            context.Response.Headers["Location"] = context.RedirectUri;
+            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
             return Task.CompletedTask;
         };
     })
@@ -132,8 +141,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
-app.UseExceptionHandler();
-app.UseStatusCodePages();
+// Undecided about including, in theory good, in practice didn't seem to handle exceptions from user code well
+//app.UseExceptionHandler();
+//app.UseStatusCodePages();
 
 app.UseAuthentication();
 app.UseAuthorization();
