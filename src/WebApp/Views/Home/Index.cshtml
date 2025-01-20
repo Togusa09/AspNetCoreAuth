@@ -5,25 +5,24 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     
     @if (!User.Identity!.IsAuthenticated)
     {
         <div style="display:flex; flex-direction:column" >
             <a class="text-dark" asp-area="" asp-controller="Login" asp-action="Login" asp-route-name="Wally" asp-route-familyName="Schirra ">Login as Wally</a>
             <a class="text-dark" asp-area="" asp-controller="Login" asp-action="Login" asp-route-name="Deke" asp-route-familyName="Slayton">Login as Deke</a>
-            <a class="text-dark" asp-area="" asp-controller="Login" asp-action="LoginOidc">Login with OIDC</a>
+            @* <a class="text-dark" asp-area="" asp-controller="Login" asp-action="LoginOidc">Login with OIDC</a> *@
         </div>
     }
     else
     {
         <h2>@(User.Identity.Name)</h2>
 
-        <ul>
-        @foreach (var claim in (User.Identity as ClaimsIdentity).Claims)
-        {
-            <li>@($"{claim.Type} - {claim.Value}")</li>
-        }
-        </ul>
+        @* <ul> *@
+        @* @foreach (var claim in (User.Identity as ClaimsIdentity).Claims) *@
+        @* { *@
+        @*     <li>@($"{claim.Type} - {claim.Value}")</li> *@
+        @* } *@
+        @* </ul> *@
     }
 </div>
