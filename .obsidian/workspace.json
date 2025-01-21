@@ -1,0 +1,208 @@
+{
+  "main": {
+    "id": "b34f9f44d3d336e4",
+    "type": "split",
+    "children": [
+      {
+        "id": "42ea55bf0bb7f5f5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "69a6f0a8bc5029bc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Guide/Contents.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Contents"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9311da259d370366",
+    "type": "split",
+    "children": [
+      {
+        "id": "e17ec6b6d2e80f4a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "44712241989a0758",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "071f381646e2fd32",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "b8d2168293f19465",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a5377d6398fb8f90",
+    "type": "split",
+    "children": [
+      {
+        "id": "49b3dfd7bbfbaefc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3ff5a6595c4f4763",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Guide/Contents.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Contents"
+            }
+          },
+          {
+            "id": "158f3fb9b50f47a7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Guide/8. Auth Policies/3. Resource Auth.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 3. Resource Auth"
+            }
+          },
+          {
+            "id": "2d32a40083216763",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "15ce50e3453e0c71",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Guide/Contents.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Contents"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "69a6f0a8bc5029bc",
+  "lastOpenFiles": [
+    "Temp/wwwroot",
+    "Temp/Views/Shared/_ValidationScriptsPartial.cshtml",
+    "Temp/Views/Shared/_Layout.cshtml.css",
+    "Temp/Views/Shared/_Layout.cshtml",
+    "Temp/Views/Shared/Error.cshtml",
+    "Temp/Views/Shared",
+    "Temp/Views/ResourceAuthPolicy/Index.cshtml",
+    "Temp/Views/ResourceAuthPolicy",
+    "Temp/Views/Home/Privacy.cshtml",
+    "Temp/Views/Home/Index.cshtml",
+    "Temp/Views/Home",
+    "Guide/7. Auth Policies/1. Policies.md",
+    "Guide/6. Mocking Authentication For Tests/1. Mock Auth Handler.md",
+    "Guide/5. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
+    "Guide/4. OIDC Auth/1. OIDC Setup.md",
+    "Guide/3. Claims/1. Claims.md",
+    "Guide/2. Cookie Auth/1. Cookie Based Authentication.md",
+    "Guide/1. Setup/Initial setup.md",
+    "Guide/Contents.md",
+    "Guide/3. Claims/AnonymousUserInfo.png",
+    "Guide/Note.md",
+    "Guide/5. Custom Authentication Scheme/CustomAuthSucceedResponse.png",
+    "Guide/5. Custom Authentication Scheme/CustomAuthClientSucceed.png",
+    "Guide/5. Custom Authentication Scheme/CustomAuthClientFail.png",
+    "Guide/4. OIDC Auth/2. OIDC Claims.md",
+    "Guide/3. Claims/3. Roles.md",
+    "Guide/3. Claims/2. Attributes.md",
+    "Pasted image 20250121092815.png",
+    "Pasted image 20250121092726.png",
+    "Guide/3. Claims/WallyTestEngineerRole.png",
+    "Guide/3. Claims/WallTestPilotRole.png",
+    "Guide/3. Claims/WallyUserInfo.png",
+    "Guide/3. Claims/WallyUserInfoExtraClaims.png",
+    "Overview.md",
+    "Guide/7. Auth Policies/2. Authorization Handlers.md",
+    "2025-01-20.md",
+    "Untitled.canvas",
+    "Guide/7. Auth Policies/3. Resource Auth.md",
+    "Cookie auth.md",
+    "src/WebApp/wwwroot/lib/jquery-validation/LICENSE.md"
+  ]
+}
