@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers
 {
-    public class JwtAuthController(IHttpContextAccessor httpContextAccessor) : Controller
+    public class JwtBearerAuthController(IHttpContextAccessor httpContextAccessor) : Controller
     {
         public IActionResult Index()
         {

@@ -13,6 +13,7 @@ using WebApp.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+// Undecided about including, in theory good, in practice didn't seem to handle exceptions from user code well
 builder.Services.AddProblemDetails();
 
 builder.Services.AddAuthentication(sharedOptions =>
@@ -138,6 +139,9 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
+app.UseExceptionHandler();
+app.UseStatusCodePages();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -146,13 +150,13 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+else
+{
+    app.UseDeveloperExceptionPage();
+}
 
 app.UseHttpsRedirection();
 app.UseRouting();
-
-// Undecided about including, in theory good, in practice didn't seem to handle exceptions from user code well
-//app.UseExceptionHandler();
-//app.UseStatusCodePages();
 
 app.UseAuthentication();
 app.UseAuthorization();
