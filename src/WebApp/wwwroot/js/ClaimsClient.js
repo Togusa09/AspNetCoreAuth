@@ -1,24 +1,4 @@
-﻿
-async function get(path) {
-    const request = new Request(path, {
-        method: "GET",
-        redirect: "error"
-    });
-    return await fetch(request);
-}
-
-async function displayResponse(response) {
-    console.log(response.status);
-    document.getElementById("response-status").innerHTML = response.status;
-    document.getElementById("response-content").innerHTML = null;
-
-    try {
-        var data = await response.json();
-        document.getElementById("response-content").innerHTML = JSON.stringify(data, null, 4).trim();
-    } catch {
-        
-    }
-}
+﻿import { displayResponse, get } from "/js/ApiCalls.js";
 
 async function getNoAuth() {
     const response = await get(`Claims/UserInfo`);

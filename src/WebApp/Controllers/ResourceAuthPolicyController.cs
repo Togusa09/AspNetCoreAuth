@@ -15,9 +15,20 @@ namespace WebApp.Controllers
         {
             return View();
         }
+        
+        [Authorize]
+        [HttpGet("ResourceAuthPolicy/Craft")]
+        public IActionResult CapeCanaveralVehicles()
+        {
+            return Json(new[]
+            {
+                Craft.Mercury,
+                Craft.Gemini,
+                Craft.Apollo, 
+            });
+        }
 
         [AllowAnonymous]
-        //[Authorize(Policy = "IsCertifiedForCraft")]
         [HttpGet("ResourceAuthPolicy/Craft/{craftName}")]
         public async Task<IActionResult> GetCraft(string craftName)
         {

@@ -10,6 +10,6 @@
 		
 		dotnet add src/Tests/Tests.csproj reference src/WebApp/WebApp.csproj
 		```
-	1. Download assets from sample repo and add to project https://github.com/Togusa09/AspNetCoreAuth/releases. Release contains scripts and views to simplify demonstrating and testing auth.
+	1. Download latest release archive from https://github.com/Togusa09/AspNetCoreAuth/releases, and extract files to `src/WebApp`. This archive contains assets to assist in demonstrating auth, and allow the focus to remain on backend code.
 	2. Should container setup instruction go here, or leave to OIDC section
 		   1. User docker compose file `Docker/docker-compose.json`

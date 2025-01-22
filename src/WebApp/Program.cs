@@ -41,26 +41,27 @@ builder.Services.AddAuthentication(sharedOptions =>
     {
         // TODO: Strip out non-essential values where possible
         options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-
+        
+        // Address of OIDC server
         options.Authority = "http://localhost:4012";
+        // Name this client is registered with OIDC Server
         options.ClientId = "WebApp";
 
         options.ResponseType = OpenIdConnectResponseType.Code;
         options.ResponseMode = OpenIdConnectResponseMode.FormPost;
 
+        // Scopes to request access to
         options.Scope.Add("email");
         options.Scope.Add("workshop");
         options.Scope.Add("workshop_api");
 
         options.TokenValidationParameters.NameClaimType = "name";
-        //options.TokenValidationParameters.RoleClaimType = "role";
-        //options.GetClaimsFromUserInfoEndpoint = true;
 
+        // Whether to require a https connection for server metadata.
         options.RequireHttpsMetadata = !builder.Environment.IsDevelopment();
 
+        // Map "craft" from token to user
         options.ClaimActions.MapJsonKey("craft", "craft");
-
-        var test = JsonWebTokenHandler.DefaultInboundClaimTypeMap;
 
         options.Events.OnTokenValidated = context =>
         {
@@ -71,6 +72,10 @@ builder.Services.AddAuthentication(sharedOptions =>
             }
 
             return Task.CompletedTask;
+        };
+        options.Events.OnRemoteSignOut = async context =>
+        {
+            await context.HttpContext.SignOutAsync();
         };
     })
     .AddCustomAuth(CustomAuthSchemeDefaults.AuthenticationScheme, "Custom Auth", o => { })
@@ -102,24 +107,16 @@ builder.Services.AddAuthentication(sharedOptions =>
 
 builder.Services.AddSingleton(Craft.AllCraft);
 
-builder.Services.AddSingleton<IAuthorizationHandler, IsTracyFamilyAuthorizationHandler>();
 builder.Services.AddSingleton<IAuthorizationHandler, IsAstronautAuthorizationHandler>();
 builder.Services.AddSingleton<IAuthorizationHandler, IsCertifiedForCraftAuthorizationResourceHandler>();
 
 builder.Services.AddAuthorization(options =>
 {
-    // Are a member of the Tracy family if surname is Tracy
-    options.AddPolicy("TracyFamily", policy =>
-        //policy.RequireClaim(ClaimTypes.Surname, "Tracy")
-        policy.AddRequirements(new IsTracyFamilyRequirement())
-    );
-
     // Are an astronaut if trained to fly a spacecraft
     options.AddPolicy("Astronaut", policy =>
     {
         //policy.RequireClaim(ClaimTypes.Role, "Pilot");
-        //policy.RequireClaim("craft", Craft.Mercury.Name, Craft.ThunderBird1.Name, Craft.ThunderBird3.Name,
-        //    Craft.ThunderBird5.Name);
+        //policy.RequireClaim("craft", Craft.Mercury.Name);
         policy.AddRequirements(new IsAstronautRequirement());
     });
 

@@ -10,7 +10,6 @@
             <select id="launch-site" class="form-select">
                 <option value="CapeCanaveral">Cape Canaveral</option>
                 <option value="KennedySpaceCentre">Kennedy Space Centre</option>
-                <option value="TracyIsland">Tracy Island</option>
             </select>
         </div>
 
@@ -30,13 +29,5 @@
         </div>
     </form>
 
-    <div class="card">
-        <div class="card-body">
-            <div>
-                Response Status:
-                <span id="response-status"></span>
-            </div>
-            <div id="response-content"></div>
-        </div>
-    </div>
+    <partial name="_ResponseDisplay" />
 }

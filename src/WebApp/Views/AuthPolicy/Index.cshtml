@@ -1,64 +1,22 @@
 ﻿@section Scripts
 {
-    <script type="module">
-        async function getCraft(){
-            const launchSite = document.getElementById("launch-site").value;
-            const request = new Request(`AuthPolicy/LaunchSite/${launchSite}`, {
-                method: "GET"
-            });
-
-            const response = await fetch(request);
-
-            document.getElementById("response-status").innerHTML = response.status;
-            document.getElementById("response-content").innerHTML = await response.text();
-        }
-
-        document.querySelector('#get-craft').addEventListener('click', getCraft);
-    </script>
+    <script type="module" src="~/js/AuthPolicyClient.js"></script>
 }
 
 @{
-    // <label for="launch-site">
-    //     Launch Site
-    //     <select id="launch-site">
-    //         <option value="CapeCanaveral">Cape Canaveral</option>
-    //         <option value="KennedySpaceCentre">Kennedy Space Centre</option>
-    //         <option value="TracyIsland">Tracy Island</option>
-    //     </select>
-    // </label>
-
-    // <button id="get-craft">
-    //     Get Craft
-    // </button>
-
-    // <div>
-    //     Response Status:
-    //     <span id="response-status"></span>
-    // </div>
-    // <div id="response-content"></div>
-
     <form>
         <div class="mb-3">
-            <label for="launch-site" class="col-sm-2 col-form-label">Launch Site</label>
-            <select id="launch-site" class="form-select">
-                <option value="CapeCanaveral">Cape Canaveral</option>
-                <option value="KennedySpaceCentre">Kennedy Space Centre</option>
-                <option value="TracyIsland">Tracy Island</option>
+            <label for="location" class="col-sm-2 col-form-label">Location</label>
+            <select id="location" class="form-select">
+                <option value="MissionControl">Mission Control</option>
+                <option value="LaunchPad">Launch Pad</option>
             </select>
         </div>
 
         <div class="mb-3">
-            <button id="get-craft" class="btn btn-primary" type="button">Get Craft</button>
+            <button id="get-location" class="btn btn-primary" type="button">Get Location</button>
         </div>
     </form>
 
-    <div class="card">
-        <div class="card-body">
-            <div>
-                Response Status:
-                <span id="response-status"></span>
-            </div>
-            <div id="response-content"></div>
-        </div>
-    </div>
+    <partial name="_ResponseDisplay" />
 }

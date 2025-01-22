@@ -33,3 +33,22 @@ Workshop to introduce basic and intermediate features of authentication and auth
 - Azure? Don't anticipate use of any azure resources
 - Azurite? Maybe, if end up using data protection framework
 
+## To add
+
+Pros and cons of different authorisation methods - When you'd use polices vs just roles
+
+Relate to previous to projects 
+Verification of scopes? (too much OIDC?)
+
+Ensure signout of oidc etc proper documented - HttpContext.Signout May be enough but need to ensure oidc signout config is correct
+
+Other confusion part - If you don't specify authorisation attribute - Default Authentication, Fallback Auth Scheme 
+- Default auth scheme
+- Globally adding authorized
+- Attribute hierarchy
+- Challenge etc.
+
+Niche case - Trigger re-auth for things like updating passwords
+
+Logging of attempts? - Possibly Seq container  
+PII configuration

@@ -1,20 +1,21 @@
-﻿import { getCraftDetailApi, getCraftAtLaunchsite } from "/js/ApiCalls.js";
+﻿import { getCraftDetailApi, getCraftAtLaunchsite, displayResponse } from "/js/ApiCalls.js";
 
-function setDisplay(status, data) {
-    console.log(status);
-    document.getElementById("response-status").innerHTML = status;
-    document.getElementById("response-content").innerHTML = JSON.stringify(data);
+export function getCraftDetailApi(craft) {
+    return get(`ResourceAuthPolicy/Craft/${craft}`);
+}
+
+export async function getCraft() {
+    return get(`ResourceAuthPolicy/Vehicles`);
 }
 
 async function getCraft() {
-    const launchSite = document.getElementById("launch-site").value;
-    const response = await getCraftAtLaunchsite(launchSite);
+    //const launchSite = document.getElementById("launch-site").value;
+    const response = await getCraft();
 
     const selectTag = document.getElementById("craft-list")
     selectTag.innerHTML = null;
 
-    const returnedCraft = await response.json();
-    setDisplay(response.status, returnedCraft);
+    displayResponse(response);
 
     if (response.ok) {
         returnedCraft.map((craft, i) => {

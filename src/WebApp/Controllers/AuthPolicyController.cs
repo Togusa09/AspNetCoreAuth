@@ -12,36 +12,40 @@ namespace WebApp.Controllers
             return View();
         }
 
-        [Authorize(Policy = "TracyFamily")]
-        [HttpGet("AuthPolicy/LaunchSite/TracyIsland")]
-        public IActionResult TracyIslandLaunchSite()
+        // TODO: Need something to differentiate the policy here - Everyone is astronauts. Maybe actor or pilot?
+
+        [Authorize(Policy = "FlightDirector")]
+        [HttpGet("AuthPolicy/CapeCanaveral/MissionControl")]
+        public IActionResult CapeCanaveralMissionControl()
         {
-            return Json(new[]
-            {
-                Craft.ThunderBird1,
-                Craft.ThunderBird3,
-                Craft.ThunderBird5,
-            });
+            return Json("You are in mission control");
         }
 
         [Authorize(Policy = "Astronaut")]
-        [HttpGet("AuthPolicy/LaunchSite/CapeCanaveral")]
-        public IActionResult CapeCanaveralLaunchSite()
+        [HttpGet("AuthPolicy/CapeCanaveral/LaunchPad")]
+        public IActionResult CapeCanaveralLaunchPad()
         {
-            return Json(new[]
-            {
-                Craft.Mercury,
-            });
+            return Json("You are on the launchpad");
         }
 
-        [AllowAnonymous]
-        [HttpGet("AuthPolicy/LaunchSite/KennedySpaceCentre")]
-        public IActionResult KennedySpaceCentreLaunchSite()
-        {
-            return Json(new[]
-            {
-                Craft.Apollo,
-            });
-        }
+        //[Authorize]
+        //[HttpGet("AuthPolicy/CapeCanaveral/Vehicles")]
+        //public IActionResult CapeCanaveralVehicles()
+        //{
+        //    return Json(new[]
+        //    {
+        //        Craft.Mercury,
+        //    });
+        //}
+
+        //[AllowAnonymous]
+        //[HttpGet("AuthPolicy/KennedySpaceCentre/Vehicles")]
+        //public IActionResult KennedySpaceCentreVehicles()
+        //{
+        //    return Json(new[]
+        //    {
+        //        Craft.Apollo,
+        //    });
+        //}
     }
 }

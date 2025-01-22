@@ -1,30 +1,33 @@
-﻿export async function getCustomAuthData(headerName, headerVal) {
+﻿export async function get(path) {
+    const request = new Request(path, {
+        method: "GET",
+        redirect: "error"
+    });
+    return await fetch(request);
+}
+
+export async function getWithHeader(path, headerName, headerVal) {
     var headers = {};
     headers[headerName] = headerVal;
 
-    const request1 = new Request("/CustomAuthScheme/GetData", {
+    const request = new Request(path, {
         method: "GET",
         headers: headers
     });
 
-    const response = await fetch(request1);
-    return response;
-}
-
-export async function getCraftDetailApi(craft) {
-    const request = new Request(`ResourceAuthPolicy/Craft/${craft}`, {
-        method: "GET"
-    });
-
     const response = await fetch(request);
     return response;
 }
 
-export async function getCraftAtLaunchsite(launchSite) {
-    const request = new Request(`AuthPolicy/LaunchSite/${launchSite}`, {
-        method: "GET"
-    });
+export async function displayResponse(response) {
+    console.log(response.status);
+    document.getElementById("response-status").innerHTML = response.status;
+    document.getElementById("response-content").innerHTML = null;
 
-    const response = await fetch(request);
-    return response;
+    try {
+        var data = await response.json();
+        document.getElementById("response-content").innerHTML = JSON.stringify(data, null, 4).trim();
+    } catch (e){
+        console.log(e);
+    }
 }

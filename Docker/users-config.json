@@ -11,7 +11,7 @@
       },
       {
         "Type": "family_name",
-        "Value": "Tracy",
+        "Value": "Carpenter",
         "ValueType": "string"
       },
       {
@@ -21,7 +21,7 @@
       },
       {
         "Type": "craft",
-        "Value": "[\"Thunderbird 1\", \"Thunderbird 3\"]",
+        "Value": "[\"Mercury\"]",
         "ValueType": "json"
       },
       {
@@ -43,7 +43,7 @@
       },
       {
         "Type": "family_name",
-        "Value": "Tracy",
+        "Value": "Grissom",
         "ValueType": "string"
       },
       {
@@ -53,7 +53,7 @@
       },
       {
         "Type": "craft",
-        "Value": "[\"Thunderbird 2\"]",
+        "Value": "[\"Mercury\",\"Gemini\",\"Apollo\"]",
         "ValueType": "json"
       }
     ]
@@ -70,7 +70,7 @@
       },
       {
         "Type": "family_name",
-        "Value": "Tracy",
+        "Value": "Glenn",
         "ValueType": "string"
       },
       {
@@ -80,7 +80,7 @@
       },
       {
         "Type": "craft",
-        "Value": "[\"Thunderbird 1\", \"Thunderbird 3\"]",
+        "Value": "[\"Mercury\"]",
         "ValueType": "json"
       }
     ]
@@ -97,7 +97,7 @@
       },
       {
         "Type": "family_name",
-        "Value": "Tracy",
+        "Value": "Cooper",
         "ValueType": "string"
       },
       {
@@ -107,7 +107,7 @@
       },
       {
         "Type": "craft",
-        "Value": "[\"Thunderbird 2\",\"Thunderbird 4\"]",
+        "Value": "[\"Mercury\",\"Gemini\",\"Apollo\"]",
         "ValueType": "json"
       }
     ]
@@ -124,7 +124,7 @@
       },
       {
         "Type": "family_name",
-        "Value": "Tracy",
+        "Value": "Shepard",
         "ValueType": "string"
       },
       {
@@ -134,51 +134,34 @@
       },
       {
         "Type": "craft",
-        "Value": "[\"Thunderbird 3\", \"Thunderbird 5\"]",
+        "Value": "[\"Mercury\",\"Gemini\",\"Apollo\"]",
         "ValueType": "json"
       }
     ]
   },
   {
-    "SubjectId": "6",
-    "Username": "brains",
+    "SubjectId": "5",
+    "Username": "gene",
     "Password": "pwd",
     "Claims": [
       {
         "Type": "given_name",
-        "Value": "Hiram",
+        "Value": "Gene",
         "ValueType": "string"
       },
       {
         "Type": "family_name",
-        "Value": "Hackenbacker",
+        "Value": "Kranz",
         "ValueType": "string"
       },
       {
         "Type": "role",
-        "Value": "[\"Engineer\"]",
+        "Value": "[\"FlightDirector\"]",
         "ValueType": "json"
-      }
-    ]
-  },
-  {
-    "SubjectId": "7",
-    "Username": "grandma",
-    "Password": "pwd",
-    "Claims": [
-      {
-        "Type": "given_name",
-        "Value": "Grandma",
-        "ValueType": "string"
       },
       {
-        "Type": "family_name",
-        "Value": "Tracy",
-        "ValueType": "string"
-      },
-      {
-        "Type": "role",
-        "Value": "[\"Cook\"]",
+        "Type": "craft",
+        "Value": "[]",
         "ValueType": "json"
       }
     ]
