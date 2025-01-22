@@ -21,8 +21,13 @@ export async function getWithHeader(path, headerName, headerVal) {
 
 export async function displayResponse(response) {
     console.log(response.status);
+    
     document.getElementById("response-status").innerHTML = response.status;
     document.getElementById("response-content").innerHTML = null;
+
+    if (~response.ok) {
+        document.getElementById("response-content").innerHTML = response.headers.get("www-authenticate");
+    }
 
     try {
         var data = await response.json();

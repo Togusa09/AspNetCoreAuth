@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\js\ClaimsClient.js" />
+    <Content Remove="wwwroot\js\JwtAuthSchemeClient.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +18,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\js\ClaimsClient.js" />
+    <None Include="wwwroot\js\JwtAuthSchemeClient.js" />
     <None Include="wwwroot\js\CustomAuthSchemeClient.js" />
   </ItemGroup>
 

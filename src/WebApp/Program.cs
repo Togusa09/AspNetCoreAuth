@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Net;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -12,10 +11,9 @@ using WebApp.Authorisation;
 using WebApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddProblemDetails();
-
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddProblemDetails();
 
 builder.Services.AddAuthentication(sharedOptions =>
     {
@@ -48,7 +46,6 @@ builder.Services.AddAuthentication(sharedOptions =>
         options.Authority = "http://localhost:4012";
         // Name this client is registered with OIDC Server
         options.ClientId = "WebApp";
-
         options.ResponseType = OpenIdConnectResponseType.Code;
         options.ResponseMode = OpenIdConnectResponseMode.FormPost;
 
@@ -75,6 +72,22 @@ builder.Services.AddAuthentication(sharedOptions =>
                 return Task.CompletedTask;
             }
 
+            //context.Properties!.SetString("jwt_token", context.TokenEndpointResponse!.AccessToken);
+
+            return Task.CompletedTask;
+        };
+        // Stash the access token into the security context so we can pull it out later to give to the user
+        options.Events.OnTokenResponseReceived = context =>
+        {
+            context.Properties!.StoreTokens(new[]
+            {
+                new AuthenticationToken
+                {
+                    Name = "jwt_token",
+                    Value = context.TokenEndpointResponse.AccessToken
+                },
+            });
+
             return Task.CompletedTask;
         };
         options.Events.OnRemoteSignOut = async context =>
@@ -85,20 +98,13 @@ builder.Services.AddAuthentication(sharedOptions =>
     .AddCustomAuth(CustomAuthSchemeDefaults.AuthenticationScheme, "Custom Auth", o => { })
     .AddJwtBearer(options =>
     {
-        //options.TokenValidationParameters.RoleClaimType
         options.Audience = "workshop_api";
         options.Authority = "http://localhost:4012";
         options.RequireHttpsMetadata = !builder.Environment.IsDevelopment();
-        //options.MetadataAddress = config.ApiMetadataAddress;
-        //options.TokenValidationParameters = new TokenValidationParameters
-        //{
-        //    ValidateIssuer = true,
-        //    ValidIssuer = config.Authority,
-        //    ValidateAudience = true,
-        //    ValidAudience = config.Audience,
-        //    ValidateLifetime = true,
-        //    ClockSkew = TimeSpan.Zero,
-        //};
+
+        // Disabling the audience validation for the moment, as not sure how to get token including workshop_api audience
+        options.TokenValidationParameters.ValidateAudience = false;
+
         //options.Events = new JwtBearerEvents
         //{
         //    OnAuthenticationFailed = context =>
@@ -113,6 +119,8 @@ builder.Services.AddSingleton(Craft.AllCraft);
 
 builder.Services.AddSingleton<IAuthorizationHandler, IsAstronautAuthorizationHandler>();
 builder.Services.AddSingleton<IAuthorizationHandler, IsCertifiedForCraftAuthorizationResourceHandler>();
+
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAuthorization(options =>
 {

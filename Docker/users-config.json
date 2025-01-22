@@ -80,7 +80,7 @@
       },
       {
         "Type": "craft",
-        "Value": "[\"Mercury\"]",
+        "Value": "[\"Mercury\",\"Shuttle\"]",
         "ValueType": "json"
       }
     ]

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Guide/4. OIDC Auth/1. OIDC Setup.md",
+                "file": "Guide/JWT Auth/1. JWT Bearer token Auth.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. OIDC Setup"
+              "title": "1. JWT Bearer token Auth"
             }
           }
         ]
@@ -139,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Guide/4. OIDC Auth/1. OIDC Setup.md"
+                "file": "Guide/JWT Auth/1. JWT Bearer token Auth.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of 1. OIDC Setup"
+              "title": "Outline of 1. JWT Bearer token Auth"
             }
           }
         ],
@@ -164,31 +164,32 @@
   },
   "active": "3d523ded0195d397",
   "lastOpenFiles": [
-    "src/WebApp/obj/Debug/net9.0/compressed/4b5na66j86-gsr8zg6sqz.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/eq70oenj58-u7h6c1ixnd.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/ag45vus7fs-9mhng7yld6.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/dp3mhd2shg-sgjoa5577o.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/4b5na66j86-o9te58hgys.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/4b5na66j86-mnyoj9qwkr.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/4b5na66j86-sm506fe5hp.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/4b5na66j86-d035e3uw4a.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/4b5na66j86-h29b9s0gfr.gz",
+    "src/WebApp/obj/Debug/net9.0/compressed/ag45vus7fs-2voejp7ot9.gz",
+    "src/WebApp/wwwroot/js/JwtAuthSchemeClient.js",
+    "src/WebApp/wwwroot/js/CustomAuthSchemeClient - Copy.js",
+    "src/WebApp/obj/Debug/net9.0/compressed/4b5na66j86-myd4pn2dr1.gz",
+    "src/WebApp/Views/JwtAuth/Index.cshtml",
+    "src/WebApp/Views/JwtAuth",
+    "src/WebApp/Views/JWTAuth/Index.cshtml",
+    "src/WebApp/Views/JWTAuth",
+    "src/WebApp/Views/Claims - Copy/Index.cshtml",
+    "src/WebApp/Views/Claims - Copy",
+    "src/WebApp/Controllers/JWTAuthController.cs",
+    "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
+    "Guide/JWT Auth/1. JWT Bearer token Auth.md",
+    "Guide/5. Auth Policies/3. Resource Auth.md",
+    "Guide/5. Auth Policies/2. Authorization Handlers.md",
+    "Guide/5. Auth Policies/1. Policies.md",
+    "Guide/4. OIDC Auth/1. OIDC Setup.md",
     "Guide/3. Claims/3. Roles.md",
     "Guide/3. Claims/2. Attributes.md",
     "Guide/3. Claims/1. Claims.md",
-    "src/WebApp/obj/Debug/net9.0/compressed/dp3mhd2shg-ub3lb6pqbf.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/dp3mhd2shg-kmrqraskqs.gz",
-    "Guide/5. Auth Policies/1. Policies.md",
     "Guide/4. OIDC Auth/2. OIDC Claims.md",
-    "Guide/4. OIDC Auth/1. OIDC Setup.md",
     "asdsad.md",
     "Guide/2. Cookie Auth/1. Cookie Based Authentication.md",
     "Guide/3. Claims/AnonymousTestAuth.png",
-    "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
     "Overview.md",
     "Guide/Untitled.md",
-    "Guide/5. Auth Policies/3. Resource Auth.md",
-    "Guide/5. Auth Policies/2. Authorization Handlers.md",
     "Guide/4. OIDC Auth/AuthCookie.png",
     "Guide/4. OIDC Auth/IdentityServerLogin.png",
     "Guide/4. OIDC Auth/LoggedInOIDC.png",

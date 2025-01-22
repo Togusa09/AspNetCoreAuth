@@ -24,7 +24,8 @@ namespace WebApp.Controllers
             {
                 Craft.Mercury,
                 Craft.Gemini,
-                Craft.Apollo, 
+                Craft.Apollo,
+                Craft.Shuttle
             });
         }
 
