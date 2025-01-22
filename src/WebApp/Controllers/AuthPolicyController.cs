@@ -15,14 +15,14 @@ namespace WebApp.Controllers
         // TODO: Need something to differentiate the policy here - Everyone is astronauts. Maybe actor or pilot?
 
         [Authorize(Policy = "FlightDirector")]
-        [HttpGet("AuthPolicy/CapeCanaveral/MissionControl")]
+        [HttpGet("AuthPolicy/MissionControl")]
         public IActionResult CapeCanaveralMissionControl()
         {
             return Json("You are in mission control");
         }
 
         [Authorize(Policy = "Astronaut")]
-        [HttpGet("AuthPolicy/CapeCanaveral/LaunchPad")]
+        [HttpGet("AuthPolicy/LaunchPad")]
         public IActionResult CapeCanaveralLaunchPad()
         {
             return Json("You are on the launchpad");

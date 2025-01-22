@@ -1,15 +1,22 @@
-﻿import { getCraftAtLaunchsite, displayResponse } from "/js/ApiCalls.js";
+﻿import { get, displayResponse } from "/js/ApiCalls.js";
 
-async function getCraft() {
-    const launchSite = document.getElementById("launch-site").value;
-    const response = await getCraftAtLaunchsite(launchSite);
+//async function getCraft() {
+//    const launchSite = document.getElementById("launch-site").value;
+//    const response = await getCraftAtLaunchsite(launchSite);
 
-    displayResponse(response);
-}
+//    displayResponse(response);
+//}
+
+//export function getCraftDetailApi(craft) {
+//    return get(`ResourceAuthPolicy/Craft/${craft}`);
+//}
+
 
 async function getLocation() {
-    const launchSite = document.getElementById("launch-site").value;
-    const response = await getCraftAtLaunchsite(launchSite);
+    const launchSite = document.getElementById("location").value;
+    //const response = await getCraft(launchSite);
+
+    var response = await get(`AuthPolicy/${launchSite}`);
 
     displayResponse(response);
 }

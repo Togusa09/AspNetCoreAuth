@@ -1,4 +1,4 @@
-﻿import { getCraftDetailApi, getCraftAtLaunchsite, displayResponse } from "/js/ApiCalls.js";
+﻿import { getCraftDetailApi, getCraft, displayResponse } from "/js/ApiCalls.js";
 
 export function getCraftDetailApi(craft) {
     return get(`ResourceAuthPolicy/Craft/${craft}`);
