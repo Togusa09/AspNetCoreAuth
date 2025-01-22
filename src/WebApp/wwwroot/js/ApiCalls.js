@@ -27,7 +27,9 @@ export async function displayResponse(response) {
     try {
         var data = await response.json();
         document.getElementById("response-content").innerHTML = JSON.stringify(data, null, 4).trim();
+        return data;
     } catch (e){
         console.log(e);
     }
+    return undefined;
 }

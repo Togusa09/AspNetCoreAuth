@@ -2,21 +2,21 @@
 
 async function getNoAuth() {
     const response = await get(`Claims/UserInfo`);
-    displayResponse(response);
+    await displayResponse(response);
 }
 async function getAuth() {
     const response = await get(`Claims/TestAuth`);
-    displayResponse(response);
+    await displayResponse(response);
 }
 
 async function getPilot() {
     const response = await get(`Claims/IsInRole/Pilot`);
-    displayResponse(response);
+    await displayResponse(response);
 }
 
 async function getEngineer() {
     const response = await get(`Claims/IsInRole/Engineer`);
-    displayResponse(response);
+    await displayResponse(response);
 }
 
 document.querySelector('#get-no-auth').addEventListener('click', getNoAuth);

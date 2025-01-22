@@ -38,14 +38,15 @@ services:
               "family_name",
               "email",
               "name",
-              "preferred_username"
+              "preferred_username",
+              "given_name"
             ]
           }
         ]
       USERS_CONFIGURATION_PATH: /tmp/config/users-config.json
       CLIENTS_CONFIGURATION_PATH: /tmp/config/clients-config.json
       IDENTITY_RESOURCES_INLINE: | 
-        [ { "Name": "workshop", "ClaimTypes": ["craft", "role"] } ]
+        [ { "Name": "workshop", "ClaimTypes": ["craft", "role", "preferred_username"] } ]
     volumes:
       - .:/tmp/config:ro
 

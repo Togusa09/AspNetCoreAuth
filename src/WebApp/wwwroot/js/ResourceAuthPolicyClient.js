@@ -1,21 +1,16 @@
-﻿import { getCraftDetailApi, getCraft, displayResponse } from "/js/ApiCalls.js";
+﻿import { get, displayResponse } from "/js/ApiCalls.js";
 
 export function getCraftDetailApi(craft) {
     return get(`ResourceAuthPolicy/Craft/${craft}`);
 }
 
-export async function getCraft() {
-    return get(`ResourceAuthPolicy/Vehicles`);
-}
-
 async function getCraft() {
-    //const launchSite = document.getElementById("launch-site").value;
-    const response = await getCraft();
+    const response = await get(`ResourceAuthPolicy/Craft`); 
 
     const selectTag = document.getElementById("craft-list")
     selectTag.innerHTML = null;
 
-    displayResponse(response);
+    const returnedCraft = await displayResponse(response);
 
     if (response.ok) {
         returnedCraft.map((craft, i) => {
@@ -35,10 +30,7 @@ async function getCraft() {
 async function getCraftDetail() {
     const craft = document.getElementById("craft-list").value;
     const response = await getCraftDetailApi(craft);
-
-    const returnedCraft = await response.json();
-
-    setDisplay(response.status, returnedCraft);
+    await displayResponse(response);
 }
 
 document.querySelector('#get-craft').addEventListener('click', getCraft);

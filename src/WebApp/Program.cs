@@ -41,7 +41,9 @@ builder.Services.AddAuthentication(sharedOptions =>
     {
         // TODO: Strip out non-essential values where possible
         options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        
+
+        var test = JsonWebTokenHandler.DefaultInboundClaimTypeMap;
+
         // Address of OIDC server
         options.Authority = "http://localhost:4012";
         // Name this client is registered with OIDC Server
@@ -55,13 +57,15 @@ builder.Services.AddAuthentication(sharedOptions =>
         options.Scope.Add("workshop");
         options.Scope.Add("workshop_api");
 
-        options.TokenValidationParameters.NameClaimType = "name";
+        options.GetClaimsFromUserInfoEndpoint = true;
+        options.TokenValidationParameters.NameClaimType = "given_name";
 
         // Whether to require a https connection for server metadata.
         options.RequireHttpsMetadata = !builder.Environment.IsDevelopment();
 
         // Map "craft" from token to user
         options.ClaimActions.MapJsonKey("craft", "craft");
+        options.ClaimActions.MapJsonKey("given_name", "given_name");
 
         options.Events.OnTokenValidated = context =>
         {

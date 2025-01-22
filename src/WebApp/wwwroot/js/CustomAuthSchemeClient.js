@@ -6,7 +6,7 @@ async function makeFetch() {
 
     const response = await getWithHeader("/CustomAuthScheme/GetData", headerName, headerVal);
 
-    displayResponse(response);
+    await displayResponse(response);
 }
 
 document.querySelector('#make-fetch').addEventListener('click', makeFetch);

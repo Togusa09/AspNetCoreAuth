@@ -18,7 +18,7 @@ async function getLocation() {
 
     var response = await get(`AuthPolicy/${launchSite}`);
 
-    displayResponse(response);
+    await displayResponse(response);
 }
 
 //async function getMissionControl() {
