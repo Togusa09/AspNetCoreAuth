@@ -95,6 +95,23 @@ builder.Services.AddAuthentication(sharedOptions =>
         {
             await context.HttpContext.SignOutAsync();
         };
+        options.Events.OnRedirectToIdentityProvider = context =>
+        {
+            context.Properties.Items.TryGetValue("reauthenticate", out string reauthenticate);
+
+            var shouldReauthenticate = false;
+            if (reauthenticate != null && !bool.TryParse(reauthenticate, out shouldReauthenticate))
+            {
+                throw new InvalidOperationException($"'{reauthenticate}' is an invalid boolean value");
+            }
+
+            if (shouldReauthenticate)
+            {
+                context.ProtocolMessage.MaxAge = "0"; // <time since last authentication or 0>;
+            }
+
+            return Task.FromResult(0);
+        };
     })
     .AddCustomAuth(CustomAuthSchemeDefaults.AuthenticationScheme, "Custom Auth", o => { })
     .AddJwtBearer(options =>

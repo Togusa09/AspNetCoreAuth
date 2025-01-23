@@ -40,6 +40,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="JwtBearerAuth" asp-action="Index">JWT Bearer</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Sensitive" asp-action="SensitivePage">Sensitive Page</a>
+                        </li>
 
                         @if (User.Identity!.IsAuthenticated)
                         {
