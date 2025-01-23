@@ -25,16 +25,20 @@ export async function displayResponse(response) {
     document.getElementById("response-status").innerHTML = response.status;
     document.getElementById("response-content").innerHTML = null;
 
-    if (~response.ok) {
-        document.getElementById("response-content").innerHTML = response.headers.get("www-authenticate");
-    }
+    const contentType = response.headers.get("content-type");
 
-    try {
+    if (!response.ok && response.headers.has("www-authenticate")) {
+        document.getElementById("response-content").innerHTML = response.headers.get("www-authenticate");
+        return;
+    }
+ 
+    if (contentType && contentType.indexOf("application/json") !== -1) {
         var data = await response.json();
         document.getElementById("response-content").innerHTML = JSON.stringify(data, null, 4).trim();
         return data;
-    } catch (e){
-        console.log(e);
+    } else {
+        var data = await response.text();
+        document.getElementById("response-content").innerHTML = data;
+        return data;
     }
-    return undefined;
 }

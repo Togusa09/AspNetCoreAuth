@@ -20,18 +20,19 @@ Workshop to introduce basic and intermediate features of authentication and auth
 	- Policy
 	- Resource
 	- OperationAuthorizationRequirement
-- Backend For Frontend?
+- Backend For Frontend? - Sort of relevant, but sort of not. Ultimately it's just using cookies for auth instead of a Authentication header
 
 ## Does not cover (at this stage)
 - ASP.net core identity framework https://github.com/dotnet/AspNetCore/tree/main/src/Identity
 - Persisting user state to/from database
 
 ## Dependencies
-- Database? I don't think there's a need, static data should be enough
-- Docker for OIDC provider - https://github.com/Soluto/oidc-server-mock
+- ~~Database? I don't think there's a need, static data should be enough~~
+- [x] Docker for OIDC provider - https://github.com/Soluto/oidc-server-mock
 	- Will need to make up sample users and docker compose file
-- Azure? Don't anticipate use of any azure resources
-- Azurite? Maybe, if end up using data protection framework
+- ~~Azure? Don't anticipate use of any azure resources~~
+- ~~Azurite? Maybe, if end up using data protection framework~~
+	- ~~Don't seem to need at this time, so will leave out~~
 
 ## To add
 
@@ -44,11 +45,11 @@ Ensure signout of oidc etc proper documented - HttpContext.Signout May be enough
 
 Other confusion part - If you don't specify authorisation attribute - Default Authentication, Fallback Auth Scheme 
 - Default auth scheme
-- Globally adding authorized
-- Attribute hierarchy
+- [ ] Globally adding authorized
+- [X] Attribute hierarchy
 - Challenge etc.
 
-Niche case - Trigger re-auth for things like updating passwords
+ - [X] Niche case - Trigger re-auth for things like updating passwords
 
 Logging of attempts? - Possibly Seq container  
 PII configuration

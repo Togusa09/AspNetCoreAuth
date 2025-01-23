@@ -9,6 +9,7 @@ namespace WebApp.Controllers
     {
         public IActionResult Index()
         {
+            // View should already exist in workshop assets
             return View();
         }
 

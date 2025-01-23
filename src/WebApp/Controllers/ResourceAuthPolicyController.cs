@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Authentication;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Authorisation;
 using WebApp.Models;
@@ -13,6 +15,7 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
+            // View should already exist in workshop assets
             return View();
         }
         

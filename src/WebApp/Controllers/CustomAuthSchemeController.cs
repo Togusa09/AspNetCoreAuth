@@ -9,6 +9,7 @@ public class CustomAuthSchemeController : Controller
     [AllowAnonymous]
     public IActionResult Index()
     {
+        // View from workshop assets
         return View();
     }
 

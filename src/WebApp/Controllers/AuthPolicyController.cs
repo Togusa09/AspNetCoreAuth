@@ -9,10 +9,9 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
+            // View should already exist in workshop assets
             return View();
         }
-
-        // TODO: Need something to differentiate the policy here - Everyone is astronauts. Maybe actor or pilot?
 
         [Authorize(Policy = "FlightDirector")]
         [HttpGet("AuthPolicy/MissionControl")]
@@ -27,25 +26,5 @@ namespace WebApp.Controllers
         {
             return Json("You are on the launchpad");
         }
-
-        //[Authorize]
-        //[HttpGet("AuthPolicy/CapeCanaveral/Vehicles")]
-        //public IActionResult CapeCanaveralVehicles()
-        //{
-        //    return Json(new[]
-        //    {
-        //        Craft.Mercury,
-        //    });
-        //}
-
-        //[AllowAnonymous]
-        //[HttpGet("AuthPolicy/KennedySpaceCentre/Vehicles")]
-        //public IActionResult KennedySpaceCentreVehicles()
-        //{
-        //    return Json(new[]
-        //    {
-        //        Craft.Apollo,
-        //    });
-        //}
     }
 }

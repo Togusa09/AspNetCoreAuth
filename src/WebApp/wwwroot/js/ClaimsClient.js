@@ -14,12 +14,12 @@ async function getPilot() {
     await displayResponse(response);
 }
 
-async function getEngineer() {
-    const response = await get(`Claims/IsInRole/Engineer`);
+async function getFlightDirector() {
+    const response = await get(`Claims/IsInRole/FlightDirector`);
     await displayResponse(response);
 }
 
 document.querySelector('#get-no-auth').addEventListener('click', getNoAuth);
 document.querySelector('#get-auth').addEventListener('click', getAuth);
 document.querySelector('#get-pilot').addEventListener('click', getPilot);
-document.querySelector('#get-engineer').addEventListener('click', getEngineer);
+document.querySelector('#get-flight-director').addEventListener('click', getFlightDirector);

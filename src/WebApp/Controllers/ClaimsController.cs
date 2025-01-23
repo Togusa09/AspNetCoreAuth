@@ -37,11 +37,11 @@ namespace WebApp.Controllers
             return OkResponse("Pilot Role");
         }
 
-        [Authorize(Roles = "Engineer")]
-        [HttpGet("IsInRole/Engineer")]
+        [Authorize(Roles = "FlightDirector")]
+        [HttpGet("IsInRole/FlightDirector")]
         public IActionResult TestEngineer()
         {
-            return OkResponse("Engineer Role");
+            return OkResponse("Flight Director Role");
         }
 
         private IActionResult OkResponse(string action)

@@ -3,14 +3,13 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Authorisation
 {
-
-    public class IsEngineerAuthorizationHandler :
-        AuthorizationHandler<IsEngineerRequirement>
+    public class IsFlightDirectorAuthorizationHandler :
+        AuthorizationHandler<IsFlightDirectorRequirement>
     {
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
-                                                       IsEngineerRequirement requirement)
+                                                       IsFlightDirectorRequirement requirement)
         {
-            if (context.User.HasClaim(ClaimTypes.Role, "Engineer"))
+            if (context.User.HasClaim(ClaimTypes.Role, "FlightDirector"))
             {
                 context.Succeed(requirement);
             }
@@ -19,5 +18,5 @@ namespace WebApp.Authorisation
         }
     }
 
-    public class IsEngineerRequirement : IAuthorizationRequirement { }
+    public class IsFlightDirectorRequirement : IAuthorizationRequirement { }
 }

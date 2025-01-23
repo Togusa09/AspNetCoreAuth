@@ -150,6 +150,13 @@ builder.Services.AddAuthorization(options =>
         policy.AddRequirements(new IsAstronautRequirement());
     });
 
+    options.AddPolicy("FlightDirector", policy =>
+    {
+        //policy.RequireClaim(ClaimTypes.Role, "Pilot");
+        //policy.RequireClaim("craft", Craft.Mercury.Name);
+        policy.AddRequirements(new IsFlightDirectorRequirement());
+    });
+
     options.AddPolicy("IsCertifiedForCraft",
         policy => { policy.AddRequirements(new IsCertifiedForCraftRequirement()); });
 });
