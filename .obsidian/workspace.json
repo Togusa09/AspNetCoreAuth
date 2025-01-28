@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tasks.md",
-                "mode": "preview",
+                "file": "Guide/3. Restricting Auth/2. Claims.md",
+                "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "Tasks"
+              "title": "2. Claims"
             }
           }
         ]
@@ -73,8 +73,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -140,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tasks.md"
+                "file": "Guide/3. Restricting Auth/2. Claims.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Tasks"
+              "title": "Outline of 2. Claims"
             }
           }
         ],
@@ -166,7 +165,12 @@
   },
   "active": "e64a324e24bd5a45",
   "lastOpenFiles": [
+    "src/WebApp/obj/Debug/net9.0/compressed/nnfzppmz32-6cfz1n2cew.gz",
+    "Tasks.md",
+    "Overview.md",
     "Guide/3. Restricting Auth/1. Attributes.md",
+    "Guide/3. Restricting Auth/2. Claims.md",
+    "Guide/5. Auth Policies/1. Policies.md",
     "Guide/3. Restricting Auth/Attributes/TaskTwo_AnonUser_Unauthenticated.png",
     "Guide/3. Restricting Auth/Attributes/TaskTwo_AnonUser_Authenticated.png",
     "Guide/3. Restricting Auth/Attributes/TaskTwo_WithUser_Authenticated.png",
@@ -189,19 +193,15 @@
     "src/WebApp/obj/Debug/net9.0/compressed/mi8rvzaezd-mrlpezrjn3.gz",
     "src/WebApp/obj/Debug/net9.0/compressed/da9x1o9vkc-83jwlth58m.gz",
     "Guide/3. Restricting Auth/3. Roles.md",
-    "Guide/3. Restricting Auth/2. Claims.md",
-    "Tasks.md",
     "Guide/7. Mocking Authentication For Tests/1. Mock Auth Handler.md",
     "Guide/0. Setup/Initial setup.md",
     "Guide/4. OIDC Auth/2. OIDC Claims.md",
-    "Overview.md",
     "Guide/Untitled.md",
     "Guide/Contents.md",
     "Guide/JWT Auth/1. JWT Bearer token Auth.md",
     "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
     "Guide/5. Auth Policies/3. Resource Auth.md",
     "Guide/5. Auth Policies/2. Authorization Handlers.md",
-    "Guide/5. Auth Policies/1. Policies.md",
     "Guide/4. OIDC Auth/1. OIDC Setup.md",
     "Guide/4. OIDC Auth/3. Rechallenge OIDC auth.md",
     "asdsad.md",

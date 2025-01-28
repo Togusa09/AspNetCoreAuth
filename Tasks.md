@@ -10,4 +10,5 @@
 - [ ] Figure out if workshop_api scope is required for OIDC config [1. OIDC Setup](Guide/4.%20OIDC%20Auth/1.%20OIDC%20Setup.md)
 - [ ] Redo [1. Policies](Guide/5.%20Auth%20Policies/1.%20Policies.md) to reflect current example code
 - [ ] Investigate options to export to standard markdown or wiki formats (Changing links from wiki to relative may be enough for this)
+- [ ] Add routes in home controller for returning views so index methods don't need to be added to the task controllers
 - [ ] Create archive of initial state for releases

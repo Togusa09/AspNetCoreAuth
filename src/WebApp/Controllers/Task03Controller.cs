@@ -16,21 +16,12 @@ namespace WebApp.Controllers
             // View should already exist in workshop assets
             return View();
         }
-        
-        // Role authorisation
 
-        [Authorize(Roles = "Pilot")]
-        [HttpGet("IsInRole/Pilot")]
-        public IActionResult TestPilot()
+        [AllowAnonymous]
+        [HttpGet("GetClaims")]
+        public IActionResult GetClaims()
         {
-            return OkResponse("Pilot Role");
-        }
-
-        [Authorize(Roles = "FlightDirector")]
-        [HttpGet("IsInRole/FlightDirector")]
-        public IActionResult TestEngineer()
-        {
-            return OkResponse("Flight Director Role");
+            return OkResponse("Get Claims");
         }
 
         private IActionResult OkResponse(string action)
