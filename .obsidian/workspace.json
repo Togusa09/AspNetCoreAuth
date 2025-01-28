@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "ebae15214ad4446f",
+        "id": "85ea2b4c648b1d52",
         "type": "tabs",
         "children": [
           {
-            "id": "3d523ded0195d397",
+            "id": "e64a324e24bd5a45",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Guide/JWT Auth/1. JWT Bearer token Auth.md",
-                "mode": "source",
-                "source": false
+                "file": "Tasks.md",
+                "mode": "preview",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "1. JWT Bearer token Auth"
+              "title": "Tasks"
             }
           }
         ]
@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "20250121092815",
+                "query": "Rename controllers to correspond to task numb",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,7 +73,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -139,10 +140,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Guide/JWT Auth/1. JWT Bearer token Auth.md"
+                "file": "Tasks.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of 1. JWT Bearer token Auth"
+              "title": "Outline of Tasks"
             }
           }
         ],
@@ -159,49 +160,51 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "publish:Publish changes...": false
     }
   },
-  "active": "3d523ded0195d397",
+  "active": "e64a324e24bd5a45",
   "lastOpenFiles": [
-    "src/WebApp/obj/Debug/net9.0/compressed/ag45vus7fs-2voejp7ot9.gz",
-    "src/WebApp/wwwroot/js/JwtAuthSchemeClient.js",
-    "src/WebApp/wwwroot/js/CustomAuthSchemeClient - Copy.js",
-    "src/WebApp/obj/Debug/net9.0/compressed/4b5na66j86-myd4pn2dr1.gz",
-    "src/WebApp/Views/JwtAuth/Index.cshtml",
-    "src/WebApp/Views/JwtAuth",
-    "src/WebApp/Views/JWTAuth/Index.cshtml",
-    "src/WebApp/Views/JWTAuth",
-    "src/WebApp/Views/Claims - Copy/Index.cshtml",
-    "src/WebApp/Views/Claims - Copy",
-    "src/WebApp/Controllers/JWTAuthController.cs",
-    "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
+    "Guide/3. Restricting Auth/1. Attributes.md",
+    "Guide/3. Restricting Auth/Attributes/TaskTwo_AnonUser_Unauthenticated.png",
+    "Guide/3. Restricting Auth/Attributes/TaskTwo_AnonUser_Authenticated.png",
+    "Guide/3. Restricting Auth/Attributes/TaskTwo_WithUser_Authenticated.png",
+    "Guide/3. Restricting Auth/Attributes/TaskTwo_WithUser_Unauthenticated.png",
+    "Guide/3. Restricting Auth/AnonymousUserInfo.png",
+    "Guide/3. Restricting Auth/Attributes",
+    "Guide/3. Restricting Auth/AnonymousTestAuth.png",
+    "Guide/3. Restricting Auth/ClaimsDekeLogin.png",
+    "Guide/1. Cookie Auth/1. Cookie Based Authentication.md",
+    "Guide/1. Cookie Auth/CookieAuth3.png",
+    "Guide/1. Cookie Auth/CookieAuth2.png",
+    "Guide/1. Cookie Auth/CookieAuth1.png",
+    "src/WebApp/obj/Debug/net9.0/compressed/woqmgvgciv-kgyr9w213v.gz",
+    "src/WebApp/obj/Debug/net9.0/compressed/tya4lddc6q-kgyr9w213v.gz",
+    "src/WebApp/obj/Debug/net9.0/compressed/lydad576s8-mlv21k5csn.gz",
+    "src/WebApp/obj/Debug/net9.0/compressed/9wub79eacs-muycvpuwrr.gz",
+    "src/WebApp/obj/Debug/net9.0/compressed/ogcldsznfi-x0q3zqp4vz.gz",
+    "src/WebApp/obj/Debug/net9.0/compressed/zstm6nnm4a-ag7o75518u.gz",
+    "src/WebApp/obj/Debug/net9.0/compressed/gxyl9nk4ei-lzl9nlhx6b.gz",
+    "src/WebApp/obj/Debug/net9.0/compressed/mi8rvzaezd-mrlpezrjn3.gz",
+    "src/WebApp/obj/Debug/net9.0/compressed/da9x1o9vkc-83jwlth58m.gz",
+    "Guide/3. Restricting Auth/3. Roles.md",
+    "Guide/3. Restricting Auth/2. Claims.md",
+    "Tasks.md",
+    "Guide/7. Mocking Authentication For Tests/1. Mock Auth Handler.md",
+    "Guide/0. Setup/Initial setup.md",
+    "Guide/4. OIDC Auth/2. OIDC Claims.md",
+    "Overview.md",
+    "Guide/Untitled.md",
+    "Guide/Contents.md",
     "Guide/JWT Auth/1. JWT Bearer token Auth.md",
+    "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
     "Guide/5. Auth Policies/3. Resource Auth.md",
     "Guide/5. Auth Policies/2. Authorization Handlers.md",
     "Guide/5. Auth Policies/1. Policies.md",
     "Guide/4. OIDC Auth/1. OIDC Setup.md",
-    "Guide/3. Claims/3. Roles.md",
-    "Guide/3. Claims/2. Attributes.md",
-    "Guide/3. Claims/1. Claims.md",
-    "Guide/4. OIDC Auth/2. OIDC Claims.md",
+    "Guide/4. OIDC Auth/3. Rechallenge OIDC auth.md",
     "asdsad.md",
-    "Guide/2. Cookie Auth/1. Cookie Based Authentication.md",
-    "Guide/3. Claims/AnonymousTestAuth.png",
-    "Overview.md",
-    "Guide/Untitled.md",
-    "Guide/4. OIDC Auth/AuthCookie.png",
-    "Guide/4. OIDC Auth/IdentityServerLogin.png",
-    "Guide/4. OIDC Auth/LoggedInOIDC.png",
-    "Guide/4. OIDC Auth/Pasted image 20250121152544.png",
-    "Guide/4. OIDC Auth/ClaimsScotExtraRoles.png",
-    "Guide/4. OIDC Auth/ClaimsScotInitialRoles.png",
-    "Guide/3. Claims/ClaimsDekeRoles.png",
-    "Guide/3. Claims/WallyTestAuth.png",
-    "Guide/3. Claims/WallyUserInfoExtraClaims.png",
-    "Guide/1. Setup/Initial setup.md",
-    "Guide/7. Mocking Authentication For Tests/1. Mock Auth Handler.md",
-    "Guide/Contents.md",
     "Guide/Note.md",
     "2025-01-20.md",
     "Untitled.canvas",

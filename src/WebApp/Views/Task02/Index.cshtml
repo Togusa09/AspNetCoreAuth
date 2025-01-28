@@ -1,0 +1,18 @@
+﻿@section Scripts
+{
+    <script type="module" src="~/js/Task02Client.js"></script>
+}
+
+@{
+    <h1>Task Two - Authentication Attributes</h1>
+    <form class="row g-3">
+        <div class="col-auto">
+            <button id="get-no-auth" class="btn btn-primary mb-3" type="button">Call Unauthenticated Url</button>
+        </div>
+        <div class="col-auto">
+            <button id="get-auth" class="btn btn-primary mb-3" type="button">Call Authenticated Url</button>
+        </div>
+    </form>
+
+    <partial name="_ResponseDisplay" />
+}

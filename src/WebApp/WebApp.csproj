@@ -7,8 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\js\ClaimsClient.js" />
-    <Content Remove="wwwroot\js\JwtAuthSchemeClient.js" />
+    <Content Remove="wwwroot\js\Task02Client.js" />
+    <Content Remove="wwwroot\js\Task03Client.js" />
+    <Content Remove="wwwroot\js\Task07Client.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,9 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\js\ClaimsClient.js" />
-    <None Include="wwwroot\js\JwtAuthSchemeClient.js" />
-    <None Include="wwwroot\js\CustomAuthSchemeClient.js" />
+    <None Include="wwwroot\js\Task02Client.js" />
+    <None Include="wwwroot\js\Task03Client.js" />
+    <None Include="wwwroot\js\Task07Client.js" />
+    <None Include="wwwroot\js\Task05Client.js" />
   </ItemGroup>
 
 </Project>

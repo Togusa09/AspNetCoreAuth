@@ -4,8 +4,9 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    
+    <h1>ASP.Net Auth Workshop</h1>
+
+    <h2>User</h2>
     @if (!User.Identity!.IsAuthenticated)
     {
         <div style="display:flex; flex-direction:column" >
@@ -18,4 +19,16 @@
     {
         <h2>@(User.Identity.Name)</h2>
     }
+    
+    <h2>Workshop Tasks</h2>
+    <div style="display:flex; flex-direction:column">
+        <a class="text-dark" asp-area="" asp-controller="Task02" asp-action="Index">Task Two</a>
+        <a class="text-dark" asp-area="" asp-controller="Task03" asp-action="Index">Task Three</a>
+        <a class="text-dark" asp-area="" asp-controller="Task03" asp-action="Index">Task Four</a>
+        <a class="text-dark" asp-area="" asp-controller="Task05" asp-action="Index">Task Five</a>
+        <a class="text-dark" asp-area="" asp-controller="Task06" asp-action="Index">Task Six</a>
+        <a class="text-dark" asp-area="" asp-controller="Task07" asp-action="Index">Task Seven</a>
+        <a class="text-dark" asp-area="" asp-controller="Task08" asp-action="Index">Task Eight A</a>
+        <a class="text-dark" asp-area="" asp-controller="Task08" asp-action="SensitivePage">Task Eight B</a>
+    </div>
 </div>

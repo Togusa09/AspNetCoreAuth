@@ -13,6 +13,7 @@ using WebApp.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+
 // Undecided about including, in theory good, in practice didn't seem to handle exceptions from user code well
 builder.Services.AddProblemDetails();
 
@@ -43,7 +44,7 @@ builder.Services.AddAuthentication(sharedOptions =>
 
         var test = JsonWebTokenHandler.DefaultInboundClaimTypeMap;
 
-        // Address of OIDC server
+        // Address of OIDC server, can be updated in docker config
         options.Authority = "http://localhost:4012";
         // Name this client is registered with OIDC Server
         options.ClientId = "WebApp";
@@ -117,6 +118,7 @@ builder.Services.AddAuthentication(sharedOptions =>
     .AddJwtBearer(options =>
     {
         options.Audience = "workshop_api";
+        // Address of OIDC server, can be updated in docker config
         options.Authority = "http://localhost:4012";
         options.RequireHttpsMetadata = !builder.Environment.IsDevelopment();
 

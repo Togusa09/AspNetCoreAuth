@@ -7,11 +7,14 @@ using WebApp.Models;
 
 namespace WebApp.Controllers;
 
+/// <summary>
+/// Controller for task 1 and ? for managing authentication
+/// </summary>
 public class LoginController : Controller
 {
     public async Task<IActionResult> Login(string name, string familyName)
     {
-        // This example is performed by a trained stunt developer. Please do not try this at home.
+        // Populate the identity with the passed in details
         var identity = new ClaimsIdentity(
         [
             new(ClaimTypes.Name, name),
@@ -19,12 +22,13 @@ public class LoginController : Controller
 
         ], CookieAuthenticationDefaults.AuthenticationScheme);
 
-        identity.AddClaims(
-        [
-            new Claim(ClaimTypes.Role, "Pilot"),
-            new Claim("craft", Craft.Mercury.Name)
-        ]);
+        //identity.AddClaims(
+        //[
+        //    new Claim(ClaimTypes.Role, "Pilot"),
+        //    new Claim("craft", Craft.Mercury.Name)
+        //]);
 
+        // This example is performed by a trained stunt developer. Please do not try this at home.
         await HttpContext.SignInAsync(new ClaimsPrincipal(identity));
         return RedirectToAction("Index", "Home");
     }
