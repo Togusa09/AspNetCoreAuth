@@ -1,62 +1,45 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Authorisation;
-using WebApp.Models;
 
 namespace WebApp.Controllers
 {
     /// <summary>
-    /// Controller for Task 06 - Resource based authorization
+    /// Controller for Task 06 - prompt re-auth for sensitive content
     /// </summary>
-    /// <param name="authorizationService"></param>
-    /// <param name="allCraft"></param>
+    /// <param name="httpContextAccessor"></param>
     [Route("Task06")]
     [ApiController]
-    public class Task06Controller(
-        IAuthorizationService authorizationService,
-        Craft[] allCraft
-        ) : Controller
+    public class Task06Controller(IHttpContextAccessor httpContextAccessor) : Controller
     {
-        [AllowAnonymous]
-        public IActionResult Index()
+        // Based on https://hajekj.net/2017/03/06/forcing-reauthentication-with-azure-ad/
+
+        [RequireReauthentication(20)]
+        public async Task<IActionResult> Index()
         {
+            var state = new Dictionary<string, string> { { "reauthenticate", "true" } };
+
+            await httpContextAccessor.HttpContext.ChallengeAsync(
+                OpenIdConnectDefaults.AuthenticationScheme, 
+                new AuthenticationProperties(state)
+                {
+                    RedirectUri = "/SensitivePage"
+                }
+            );
+
+
+            // Not sure if we should be reaching here cause of the challenge?
+
             // View should already exist in workshop assets
             return View();
         }
-        
-        [Authorize]
-        [HttpGet("Craft")]
-        public IActionResult CapeCanaveralVehicles()
+
+        [RequireReauthentication(120)]
+        public IActionResult SensitivePage()
         {
-            return Json(new[]
-            {
-                Craft.Mercury,
-                Craft.Gemini,
-                Craft.Apollo,
-                Craft.Shuttle
-            });
-        }
-
-        [AllowAnonymous]
-        [HttpGet("Craft/{craftName}")]
-        public async Task<IActionResult> GetCraft(string craftName)
-        {
-            var selectedCraft = allCraft.FirstOrDefault(c => c.Name == craftName);
-            if (selectedCraft == null)
-            {
-                return NotFound();
-            }
-
-            var authorizationResult = await authorizationService
-                .AuthorizeAsync(User, selectedCraft, new IsCertifiedForCraftRequirement());
-
-            if (!authorizationResult.Succeeded)
-            {
-                return Forbid();
-            }
-
-            return Json(selectedCraft);
-
+            // View should already exist in workshop assets
+            return View();
         }
     }
 }

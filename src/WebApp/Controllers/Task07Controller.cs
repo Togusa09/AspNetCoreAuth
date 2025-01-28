@@ -1,37 +1,31 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Authentication.CustomScheme;
 
-namespace WebApp.Controllers
+namespace WebApp.Controllers;
+
+/// <summary>
+/// Controller for Task 7 - Custom Auth Scheme
+/// </summary>
+[Route("Task07")]
+[ApiController]
+public class Task07Controller : Controller
 {
-    /// <summary>
-    /// Controller for Task 7 - JWT authentication
-    /// </summary>
-    /// <param name="httpContextAccessor"></param>
-    [Route("Task07")]
-    [ApiController]
-    public class Task07Controller(IHttpContextAccessor httpContextAccessor) : Controller
+    //[AllowAnonymous]
+    //public IActionResult Index()
+    //{
+    //    // View from workshop assets
+    //    return View();
+    //}
+
+    [Authorize(AuthenticationSchemes = CustomAuthSchemeDefaults.AuthenticationScheme)]
+    public IActionResult GetData()
     {
-        public IActionResult Index()
+        return Json(new
         {
-            // View should already exist in workshop assets
-            return View();
-        }
-
-        [Authorize]
-        [HttpGet("GetUserJwt")]
-        public async Task<IActionResult> GetUserJwt()
-        {
-            var token = await httpContextAccessor.HttpContext.GetTokenAsync("jwt_token");
-            return Json(token);
-        }
-
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        [HttpGet("TestJwt")]
-        public IActionResult TestJwt()
-        {
-            return Json("JWT worked successfully");
-        }
+            Data1 = "asdasfsfdsd",
+            Data2 = "12e23rwefesf",
+            User = User.Identity!.Name
+        });
     }
 }

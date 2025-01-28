@@ -11,13 +11,6 @@ namespace WebApp.Controllers
     [ApiController]
     public class Task04Controller : Controller
     {
-        [AllowAnonymous]
-        public IActionResult Index()
-        {
-            // View should already exist in workshop assets
-            return View();
-        }
-
         [Authorize(Policy = "FlightDirector")]
         [HttpGet("MissionControl")]
         public IActionResult CapeCanaveralMissionControl()

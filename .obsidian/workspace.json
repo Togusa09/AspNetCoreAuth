@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Guide/3. Restricting Auth/2. Claims.md",
+                "file": "Guide/4. OIDC Auth/2. Rechallenge OIDC auth.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "2. Claims"
+              "title": "2. Rechallenge OIDC auth"
             }
           }
         ]
@@ -139,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Guide/3. Restricting Auth/2. Claims.md"
+                "file": "Guide/4. OIDC Auth/2. Rechallenge OIDC auth.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of 2. Claims"
+              "title": "Outline of 2. Rechallenge OIDC auth"
             }
           }
         ],
@@ -165,45 +165,45 @@
   },
   "active": "e64a324e24bd5a45",
   "lastOpenFiles": [
-    "src/WebApp/obj/Debug/net9.0/compressed/nnfzppmz32-6cfz1n2cew.gz",
+    "src/WebApp/obj/Debug/net9.0/compressed/77ckarqlun-hql5nnd7e1.gz",
+    "src/WebApp/obj/Debug/net9.0/compressed/j8tgqzttje-gcaf66isu9.gz",
+    "src/WebApp/obj/Debug/net9.0/compressed/fspdjdrw69-b9sayid5wm.gz",
+    "src/WebApp/wwwroot/js/Task07Client.js",
+    "src/WebApp/wwwroot/js/Task08Client.js",
+    "src/WebApp/wwwroot/js/Task09Client.js",
+    "src/WebApp/Controllers/Task06Controller.cs",
+    "src/WebApp/Views/Task06/SensitivePage.cshtml",
+    "src/WebApp/Views/Task06/Index.cshtml",
+    "src/WebApp/Views/Task06",
+    "src/WebApp/Controllers/Task07Controller.cs",
+    "Guide/4. OIDC Auth/1. OIDC Setup.md",
+    "Guide/4. OIDC Auth/2. Rechallenge OIDC auth.md",
+    "Guide/4. OIDC Auth/2. OIDC Claims.md",
+    "Guide/3. Restricting Auth/3. Roles.md",
+    "Guide/3. Restricting Auth/2. Claims.md",
     "Tasks.md",
     "Overview.md",
     "Guide/3. Restricting Auth/1. Attributes.md",
-    "Guide/3. Restricting Auth/2. Claims.md",
     "Guide/5. Auth Policies/1. Policies.md",
     "Guide/3. Restricting Auth/Attributes/TaskTwo_AnonUser_Unauthenticated.png",
     "Guide/3. Restricting Auth/Attributes/TaskTwo_AnonUser_Authenticated.png",
     "Guide/3. Restricting Auth/Attributes/TaskTwo_WithUser_Authenticated.png",
     "Guide/3. Restricting Auth/Attributes/TaskTwo_WithUser_Unauthenticated.png",
     "Guide/3. Restricting Auth/AnonymousUserInfo.png",
-    "Guide/3. Restricting Auth/Attributes",
     "Guide/3. Restricting Auth/AnonymousTestAuth.png",
     "Guide/3. Restricting Auth/ClaimsDekeLogin.png",
     "Guide/1. Cookie Auth/1. Cookie Based Authentication.md",
     "Guide/1. Cookie Auth/CookieAuth3.png",
     "Guide/1. Cookie Auth/CookieAuth2.png",
     "Guide/1. Cookie Auth/CookieAuth1.png",
-    "src/WebApp/obj/Debug/net9.0/compressed/woqmgvgciv-kgyr9w213v.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/tya4lddc6q-kgyr9w213v.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/lydad576s8-mlv21k5csn.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/9wub79eacs-muycvpuwrr.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/ogcldsznfi-x0q3zqp4vz.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/zstm6nnm4a-ag7o75518u.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/gxyl9nk4ei-lzl9nlhx6b.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/mi8rvzaezd-mrlpezrjn3.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/da9x1o9vkc-83jwlth58m.gz",
-    "Guide/3. Restricting Auth/3. Roles.md",
     "Guide/7. Mocking Authentication For Tests/1. Mock Auth Handler.md",
     "Guide/0. Setup/Initial setup.md",
-    "Guide/4. OIDC Auth/2. OIDC Claims.md",
     "Guide/Untitled.md",
     "Guide/Contents.md",
     "Guide/JWT Auth/1. JWT Bearer token Auth.md",
     "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
     "Guide/5. Auth Policies/3. Resource Auth.md",
     "Guide/5. Auth Policies/2. Authorization Handlers.md",
-    "Guide/4. OIDC Auth/1. OIDC Setup.md",
-    "Guide/4. OIDC Auth/3. Rechallenge OIDC auth.md",
     "asdsad.md",
     "Guide/Note.md",
     "2025-01-20.md",

@@ -1,18 +1,12 @@
-﻿import { get, getWithHeader, displayResponse } from "/js/ApiCalls.js";
-
-async function getToken() {
-    var response = await get("Task07/GetUserJwt");
-    const responseContent = await displayResponse(response);
-    document.getElementById("token-val").value = responseContent.trim('"');
-}
+﻿import { getWithHeader, displayResponse } from "/js/ApiCalls.js";
 
 async function makeFetch() {
-    const headerVal = document.getElementById("token-val").value;
+    const headerName = document.getElementById("header-name").value;
+    const headerVal = document.getElementById("header-val").value;
 
-    const response = await getWithHeader("Task07/TestJwt", "Authorization", `Bearer ${headerVal}`);
+    const response = await getWithHeader("Task07/GetData", headerName, headerVal);
 
     await displayResponse(response);
 }
 
 document.querySelector('#make-fetch').addEventListener('click', makeFetch);
-document.querySelector('#get-token').addEventListener('click', getToken);

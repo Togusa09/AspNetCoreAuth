@@ -1,11 +1,11 @@
 ﻿import { get, displayResponse } from "/js/ApiCalls.js";
 
 export function getCraftDetailApi(craft) {
-    return get(`Task06/Craft/${craft}`);
+    return get(`Task08/Craft/${craft}`);
 }
 
 async function getCraft() {
-    const response = await get(`Task06/Craft`); 
+    const response = await get(`Task08/Craft`); 
 
     const selectTag = document.getElementById("craft-list")
     selectTag.innerHTML = null;

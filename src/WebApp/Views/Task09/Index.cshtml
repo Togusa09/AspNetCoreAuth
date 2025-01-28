@@ -1,0 +1,28 @@
+﻿@section Scripts
+{
+    <script type="module" src="~/js/Task09Client.js"></script>
+}
+
+@{
+    <form>
+
+        <div class="mb-3">
+            <button id="get-token" class="btn btn-primary" type="button">Get Access Token</button>
+        </div>
+
+        <div class="mb-3">
+            <label for="token-val" class="col-sm-2 col-form-label">Token Value</label>
+            <input type="text" class="form-control" id="token-val" name="token-val" value="Please" />
+        </div>
+
+        <div class="mb-3">
+            <button id="make-fetch" class="btn btn-primary" type="button">Send Request</button>
+        </div>
+    </form>
+
+    <div class="alert alert-warning" role="alert">
+        If token has expired, you will need to log out and back in to refresh it
+    </div>
+
+    <partial name="_ResponseDisplay" />
+}

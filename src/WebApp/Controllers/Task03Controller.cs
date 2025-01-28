@@ -11,13 +11,6 @@ namespace WebApp.Controllers
     public class Task03Controller : Controller
     {
         [AllowAnonymous]
-        public IActionResult Index()
-        {
-            // View should already exist in workshop assets
-            return View();
-        }
-
-        [AllowAnonymous]
         [HttpGet("GetClaims")]
         public IActionResult GetClaims()
         {

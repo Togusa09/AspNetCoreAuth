@@ -10,11 +10,6 @@ namespace WebApp.Controllers
     [ApiController]
     public class Task02Controller : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         [Authorize]
         [HttpGet("Authenticated")]
         public IActionResult Authenticated()

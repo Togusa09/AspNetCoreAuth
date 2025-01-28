@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Models;
 
@@ -22,5 +23,13 @@ public class HomeController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+    [HttpGet("~/Test/{routeName}")]
+    [HttpGet("~/{routeName}")]
+    [AllowAnonymous]
+    public IActionResult Test(string routeName)
+    {
+        return View($"~/Views/{routeName}/Index.cshtml");
     }
 }
