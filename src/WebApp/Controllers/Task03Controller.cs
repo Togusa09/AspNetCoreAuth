@@ -25,7 +25,7 @@ namespace WebApp.Controllers
                 Action = action,
                 AuthenticationType = User.Identity?.AuthenticationType ?? "None",
                 IsAuthenticated = User.Identity?.IsAuthenticated ?? false,
-                Claims = User.Claims.Select(x => new {x.Type, x.Value})
+                Claims = User.Claims.Select(x => new { x.Type, x.Value })
             });
         }
     }

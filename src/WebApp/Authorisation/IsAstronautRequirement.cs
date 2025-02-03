@@ -12,7 +12,7 @@ namespace WebApp.Authorisation
         private readonly Craft[] _spaceCraft = craft.Where(c => c.SpaceWorthy).ToArray();
 
         protected override Task HandleRequirementAsync(
-            AuthorizationHandlerContext context, 
+            AuthorizationHandlerContext context,
             IsAstronautRequirement requirement)
         {
             if (!context.User.HasClaim(ClaimTypes.Role, "Pilot")) return Task.CompletedTask;
@@ -22,7 +22,7 @@ namespace WebApp.Authorisation
             {
                 return Task.CompletedTask;
             }
-            
+
             context.Succeed(requirement);
 
             return Task.CompletedTask;

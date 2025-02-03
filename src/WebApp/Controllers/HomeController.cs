@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using WebApp.Models;
 
 namespace WebApp.Controllers;
@@ -29,6 +30,7 @@ public class HomeController : Controller
     [AllowAnonymous]
     public IActionResult Test(string routeName)
     {
+        _logger.LogInformation("Directing to index for route {route}", routeName);
         return View($"~/Views/{routeName}/Index.cshtml");
     }
 }

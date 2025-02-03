@@ -16,7 +16,7 @@ public static class TestAuthExtensions
                     options.UserName = name;
                     options.Claims = claims;
                 });
-        
+
         return auth;
     }
 

@@ -21,7 +21,7 @@ namespace WebApp.Controllers
             var state = new Dictionary<string, string> { { "reauthenticate", "true" } };
 
             await httpContextAccessor.HttpContext.ChallengeAsync(
-                OpenIdConnectDefaults.AuthenticationScheme, 
+                OpenIdConnectDefaults.AuthenticationScheme,
                 new AuthenticationProperties(state)
                 {
                     RedirectUri = "/SensitivePage"
