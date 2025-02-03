@@ -19,6 +19,7 @@ public class Task07Controller : Controller
     //}
 
     [Authorize(AuthenticationSchemes = CustomAuthSchemeDefaults.AuthenticationScheme)]
+    [HttpGet("GetData")]
     public IActionResult GetData()
     {
         return Json(new

@@ -25,7 +25,6 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    [HttpGet("~/Test/{routeName}")]
     [HttpGet("~/{routeName}")]
     [AllowAnonymous]
     public IActionResult Test(string routeName)

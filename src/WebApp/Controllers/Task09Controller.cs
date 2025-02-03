@@ -13,11 +13,15 @@ namespace WebApp.Controllers
     [ApiController]
     public class Task09Controller(IHttpContextAccessor httpContextAccessor) : Controller
     {
-
         [Authorize]
         [HttpGet("GetUserJwt")]
         public async Task<IActionResult> GetUserJwt()
         {
+            if (User.Identity!.AuthenticationType != "OIDC")
+            {
+                return BadRequest("User needs to be logged in with OIDC to get token");
+            }
+
             var token = await httpContextAccessor.HttpContext.GetTokenAsync("jwt_token");
             return Json(token);
         }

@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using WebApp.Authentication.CustomScheme;
 using WebApp.Authorisation;
@@ -41,8 +40,8 @@ builder.Services.AddAuthentication(sharedOptions =>
     {
         // TODO: Strip out non-essential values where possible
         options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-
-        var test = JsonWebTokenHandler.DefaultInboundClaimTypeMap;
+        // Otherwise defaults to TokenValidationParameters.DefaultAuthenticationType, which is "AuthenticationTypes.Federation"
+        options.TokenValidationParameters.AuthenticationType = "OIDC";
 
         // Address of OIDC server, can be updated in docker config
         options.Authority = "http://localhost:4012";
@@ -74,21 +73,18 @@ builder.Services.AddAuthentication(sharedOptions =>
                 return Task.CompletedTask;
             }
 
-            //context.Properties!.SetString("jwt_token", context.TokenEndpointResponse!.AccessToken);
-
             return Task.CompletedTask;
         };
         // Stash the access token into the security context so we can pull it out later to give to the user
         options.Events.OnTokenResponseReceived = context =>
         {
-            context.Properties!.StoreTokens(new[]
-            {
+            context.Properties!.StoreTokens([
                 new AuthenticationToken
                 {
                     Name = "jwt_token",
                     Value = context.TokenEndpointResponse.AccessToken
-                },
-            });
+                }
+            ]);
 
             return Task.CompletedTask;
         };
@@ -124,6 +120,8 @@ builder.Services.AddAuthentication(sharedOptions =>
 
         // Disabling the audience validation for the moment, as not sure how to get token including workshop_api audience
         options.TokenValidationParameters.ValidateAudience = false;
+        // Otherwise defaults to TokenValidationParameters.DefaultAuthenticationType, which is "AuthenticationTypes.Federation"
+        options.TokenValidationParameters.AuthenticationType = "JWT";
 
         //options.Events = new JwtBearerEvents
         //{
@@ -168,12 +166,8 @@ var app = builder.Build();
 app.UseExceptionHandler();
 app.UseStatusCodePages();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    //app.UseExceptionHandler("/Home/Error");
-
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 else
