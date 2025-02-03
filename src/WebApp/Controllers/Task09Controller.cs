@@ -11,18 +11,25 @@ namespace WebApp.Controllers
     /// <param name="httpContextAccessor"></param>
     [Route("Task09")]
     [ApiController]
-    public class Task09Controller(IHttpContextAccessor httpContextAccessor) : Controller
+    public class Task09Controller(
+        IHttpContextAccessor httpContextAccessor,
+        ILogger<Task09Controller> logger
+        ) : Controller
     {
         [Authorize]
         [HttpGet("GetUserJwt")]
         public async Task<IActionResult> GetUserJwt()
         {
+            logger.LogInformation("User attempting to retrieve JWT token");
+
             if (User.Identity!.AuthenticationType != "OIDC")
             {
+                logger.LogWarning("User not authenticated with OIDC");
                 return BadRequest("User needs to be logged in with OIDC to get token");
             }
 
             var token = await httpContextAccessor.HttpContext.GetTokenAsync("jwt_token");
+            logger.LogInformation("Token successfully retrieved");
             return Json(token);
         }
 
@@ -30,6 +37,7 @@ namespace WebApp.Controllers
         [HttpGet("TestJwt")]
         public IActionResult TestJwt()
         {
+            logger.LogInformation("Testing JWT authentication");
             return Json("JWT worked successfully");
         }
     }

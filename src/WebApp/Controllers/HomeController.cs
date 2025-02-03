@@ -1,20 +1,12 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using WebApp.Models;
 
 namespace WebApp.Controllers;
 
-public class HomeController : Controller
+public class HomeController(ILogger<HomeController> logger) : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
-
     public IActionResult Index()
     {
         return View();
@@ -26,11 +18,11 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    [HttpGet("~/{routeName}")]
+    [HttpGet("~/{pathName}")]
     [AllowAnonymous]
-    public IActionResult Test(string routeName)
+    public IActionResult SharedIndex(string pathName)
     {
-        _logger.LogInformation("Directing to index for route {route}", routeName);
-        return View($"~/Views/{routeName}/Index.cshtml");
+        logger.LogInformation("Directing to index for controller {controller}", pathName);
+        return View($"~/Views/{pathName}/Index.cshtml");
     }
 }

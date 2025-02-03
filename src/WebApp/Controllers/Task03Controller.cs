@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace WebApp.Controllers
 {
@@ -8,12 +9,14 @@ namespace WebApp.Controllers
     /// </summary>
     [Route("Task03")]
     [ApiController]
-    public class Task03Controller : Controller
+    public class Task03Controller(ILogger<Task03Controller> logger)
+        : Controller
     {
         [AllowAnonymous]
         [HttpGet("GetClaims")]
         public IActionResult GetClaims()
         {
+            logger.LogInformation("Returning user claims");
             return OkResponse("Get Claims");
         }
 

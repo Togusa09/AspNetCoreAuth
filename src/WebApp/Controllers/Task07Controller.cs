@@ -9,19 +9,14 @@ namespace WebApp.Controllers;
 /// </summary>
 [Route("Task07")]
 [ApiController]
-public class Task07Controller : Controller
+public class Task07Controller(ILogger<Task07Controller> logger)
+    : Controller
 {
-    //[AllowAnonymous]
-    //public IActionResult Index()
-    //{
-    //    // View from workshop assets
-    //    return View();
-    //}
-
     [Authorize(AuthenticationSchemes = CustomAuthSchemeDefaults.AuthenticationScheme)]
     [HttpGet("GetData")]
     public IActionResult GetData()
     {
+        logger.LogInformation("Retrieving data object for custom auth");
         return Json(new
         {
             Data1 = "asdasfsfdsd",

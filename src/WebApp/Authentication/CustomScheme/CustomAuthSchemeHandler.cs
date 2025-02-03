@@ -20,25 +20,29 @@ public class CustomAuthSchemeOptions : AuthenticationSchemeOptions
 }
 
 public class CustomAuthSchemeHandler(IOptionsMonitor<CustomAuthSchemeOptions> options,
-                                     ILoggerFactory logger,
+                                     ILoggerFactory loggerFactory,
                                      UrlEncoder encoder
-) : AuthenticationHandler<CustomAuthSchemeOptions>(options, logger, encoder)
+) : AuthenticationHandler<CustomAuthSchemeOptions>(options, loggerFactory, encoder)
 {
     private readonly IOptionsMonitor<CustomAuthSchemeOptions> _options = options;
 
     protected override Task<AuthenticateResult> HandleAuthenticateAsync()
     {
+        Logger.LogInformation("Handling authentication request");
+
         var currentOptions = _options.CurrentValue;
 
         if (Request.Headers.TryGetValue(Options.HeaderName, out var headerValue))
         {
             if (headerValue != currentOptions.HeaderKey)
             {
+                Logger.LogWarning("Incorrect value for header {headerName} not found", Options.HeaderName);
                 return Task.FromResult(AuthenticateResult.Fail($"Incorrect value for header: {Options.HeaderName}"));
             }
         }
         else
         {
+            Logger.LogWarning("Expected auth header {headerName} not found", Options.HeaderName);
             return Task.FromResult(AuthenticateResult.Fail($"Missing header: {Options.HeaderName}"));
         }
 
@@ -49,6 +53,7 @@ public class CustomAuthSchemeHandler(IOptionsMonitor<CustomAuthSchemeOptions> op
             }, Scheme.Name //If principal scheme does not match the handler, asp.net will reject
         ));
 
+        Logger.LogInformation("Successfully authenticated using header");
         return Task.FromResult(AuthenticateResult.Success(new AuthenticationTicket(claimsPrincipal, this.Scheme.Name)));
     }
 }
@@ -65,6 +70,7 @@ public static class CustomAuthExtensions
             .AddOptions<CustomAuthSchemeOptions>(authenticationScheme)
             .Validate(o => !string.IsNullOrWhiteSpace(o.HeaderName)
                 , "Header name name must be specified");
+
         return builder.AddScheme<CustomAuthSchemeOptions, CustomAuthSchemeHandler>(authenticationScheme, displayName,
             configureOptions);
     }

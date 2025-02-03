@@ -1,9 +1,10 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace WebApp.Authorisation
 {
-    public class IsFlightDirectorAuthorizationHandler :
+    public class IsFlightDirectorAuthorizationHandler(ILogger<IsFlightDirectorAuthorizationHandler> logger) :
         AuthorizationHandler<IsFlightDirectorRequirement>
     {
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
@@ -11,9 +12,11 @@ namespace WebApp.Authorisation
         {
             if (context.User.HasClaim(ClaimTypes.Role, "FlightDirector"))
             {
+                logger.LogInformation("User has {role}", "FlightDirector");
                 context.Succeed(requirement);
             }
 
+            logger.LogInformation("User does not have {role}", "FlightDirector");
             return Task.CompletedTask;
         }
     }

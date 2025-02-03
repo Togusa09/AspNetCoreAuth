@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using WebApp.Authorisation;
 using WebApp.Models;
 
@@ -14,6 +15,7 @@ namespace WebApp.Controllers
     [ApiController]
     public class Task08Controller(
         IAuthorizationService authorizationService,
+        ILogger<Task08Controller> logger,
         Craft[] allCraft
         ) : Controller
     {
@@ -21,6 +23,7 @@ namespace WebApp.Controllers
         [HttpGet("Craft")]
         public IActionResult CapeCanaveralVehicles()
         {
+            logger.LogInformation("Returning list of available craft");
             return Json(new[]
             {
                 Craft.Mercury,
@@ -34,9 +37,12 @@ namespace WebApp.Controllers
         [HttpGet("Craft/{craftName}")]
         public async Task<IActionResult> GetCraft(string craftName)
         {
+            logger.LogInformation("User querying information for {craft}", craftName);
+
             var selectedCraft = allCraft.FirstOrDefault(c => c.Name == craftName);
             if (selectedCraft == null)
             {
+                logger.LogWarning("{craft} could not be found", craftName);
                 return NotFound();
             }
 
@@ -45,11 +51,12 @@ namespace WebApp.Controllers
 
             if (!authorizationResult.Succeeded)
             {
+                logger.LogWarning("User is not authorised to access {craft}", craftName);
                 return Forbid();
             }
 
+            logger.LogInformation("Returning information for {craft}", craftName);
             return Json(selectedCraft);
-
         }
     }
 }

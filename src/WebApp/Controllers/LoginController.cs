@@ -1,8 +1,10 @@
 ﻿using System.Security.Claims;
+using System.Xml.Linq;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using WebApp.Models;
 
 namespace WebApp.Controllers;
@@ -10,10 +12,14 @@ namespace WebApp.Controllers;
 /// <summary>
 /// Controller for task 1 and ? for managing authentication
 /// </summary>
-public class LoginController : Controller
+public class LoginController
+    (ILogger<LoginController> logger)
+    : Controller
 {
     public async Task<IActionResult> Login(string name, string familyName)
     {
+        logger.LogInformation("Logging in {name} {surname} with cookie auth", name, familyName);
+
         // Populate the identity with the passed in details
         var identity = new ClaimsIdentity(
         [
@@ -35,6 +41,7 @@ public class LoginController : Controller
 
     public async Task<IActionResult> Logout()
     {
+        logger.LogInformation("Logging out user {name}", User.Identity!.Name);
         await HttpContext.SignOutAsync();
         return RedirectToAction("Index", "Home");
     }
@@ -46,6 +53,7 @@ public class LoginController : Controller
             RedirectUri = returnUrl
         };
 
+        logger.LogInformation("Redirecting login to OIDC challenge");
         return Challenge(param, OpenIdConnectDefaults.AuthenticationScheme);
     }
 }

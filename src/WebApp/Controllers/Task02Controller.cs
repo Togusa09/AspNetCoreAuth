@@ -8,12 +8,14 @@ namespace WebApp.Controllers
     /// </summary>
     [Route("Task02")]
     [ApiController]
-    public class Task02Controller : Controller
+    public class Task02Controller(ILogger<Task02Controller> logger)
+        : Controller
     {
         [Authorize]
         [HttpGet("Authenticated")]
         public IActionResult Authenticated()
         {
+            logger.LogInformation("Accessing authenticate endpoint with user {name}", User.Identity!.Name);
             return Json("Authenticated Request");
         }
 
@@ -21,6 +23,7 @@ namespace WebApp.Controllers
         [HttpGet("Anonymous")]
         public IActionResult NotAuthenticated()
         {
+            logger.LogInformation("Accessing anonymous endpoint with user {name}", User.Identity!.Name);
             return Json("Not Authenticated Request");
         }
     }

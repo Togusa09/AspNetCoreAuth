@@ -3,6 +3,7 @@
 - [x] Move navigation onto home page, under login
 - [x] Rename controllers to correspond to task number, and update urls
 - [ ] Add descriptive headings to pages, probably with titles too
+- [ ] Add descriptive logging to pages so operation is visible from console
 - [ ] Merge discussion of Authorised any AllowAnonymous attributes into single block on [[1. Attributes]]
 	- [ ] Possibly more detailed explanation on attribute heirachies
 - [ ] Add info on Default/Fallback policies to [1. Policies](Guide/5.%20Auth%20Policies/1.%20Policies.md)
@@ -10,5 +11,5 @@
 - [ ] Figure out if workshop_api scope is required for OIDC config [1. OIDC Setup](Guide/4.%20OIDC%20Auth/1.%20OIDC%20Setup.md)
 - [ ] Redo [1. Policies](Guide/5.%20Auth%20Policies/1.%20Policies.md) to reflect current example code
 - [ ] Investigate options to export to standard markdown or wiki formats (Changing links from wiki to relative may be enough for this)
-- [ ] Add routes in home controller for returning views so index methods don't need to be added to the task controllers
+- [x] Add routes in home controller for returning views so index methods don't need to be added to the task controllers
 - [ ] Create archive of initial state for releases

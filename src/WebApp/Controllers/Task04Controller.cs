@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -9,12 +8,14 @@ namespace WebApp.Controllers
     /// </summary>
     [Route("Task04")]
     [ApiController]
-    public class Task04Controller : Controller
+    public class Task04Controller(ILogger<Task04Controller> logger)
+        : Controller
     {
         [Authorize(Policy = "FlightDirector")]
         [HttpGet("MissionControl")]
         public IActionResult CapeCanaveralMissionControl()
         {
+            logger.LogInformation("User is in mission control");
             return Json("You are in mission control");
         }
 
@@ -22,6 +23,7 @@ namespace WebApp.Controllers
         [HttpGet("LaunchPad")]
         public IActionResult CapeCanaveralLaunchPad()
         {
+            logger.LogInformation("User is on the launchpad");
             return Json("You are on the launchpad");
         }
     }

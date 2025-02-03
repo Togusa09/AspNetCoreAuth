@@ -11,7 +11,10 @@ namespace WebApp.Controllers
     /// <param name="httpContextAccessor"></param>
     [Route("Task06")]
     [ApiController]
-    public class Task06Controller(IHttpContextAccessor httpContextAccessor) : Controller
+    public class Task06Controller(
+        IHttpContextAccessor httpContextAccessor,
+        ILogger<Task06Controller> logger)
+        : Controller
     {
         // Based on https://hajekj.net/2017/03/06/forcing-reauthentication-with-azure-ad/
 
@@ -20,6 +23,7 @@ namespace WebApp.Controllers
         {
             var state = new Dictionary<string, string> { { "reauthenticate", "true" } };
 
+            logger.LogInformation("Triggering authentication re-challenge");
             await httpContextAccessor.HttpContext.ChallengeAsync(
                 OpenIdConnectDefaults.AuthenticationScheme,
                 new AuthenticationProperties(state)
