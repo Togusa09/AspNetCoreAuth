@@ -7,21 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\js\Task02Client.js" />
-    <Content Remove="wwwroot\js\Task03Client.js" />
-    <Content Remove="wwwroot\js\Task09Client.js" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\js\Task02Client.js" />
-    <None Include="wwwroot\js\Task03Client.js" />
-    <None Include="wwwroot\js\Task09Client.js" />
-    <None Include="wwwroot\js\Task07Client.js" />
   </ItemGroup>
 
 </Project>
