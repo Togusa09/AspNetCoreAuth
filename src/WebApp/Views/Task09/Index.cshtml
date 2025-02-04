@@ -1,28 +1,63 @@
 ﻿@section Scripts
 {
-    <script type="module" src="~/js/Task09Client.js"></script>
+    <script type="module">
+        import { get, displayResponse } from "/js/ApiCalls.js";
+
+        function getCraftDetailApi(craft) {
+            return get(`Task09/Craft/${craft}`);
+        }
+
+        async function getCraft() {
+            const response = await get(`Task09/Craft`);
+
+            const selectTag = document.getElementById("craft-list")
+            selectTag.innerHTML = null;
+
+            const returnedCraft = await displayResponse(response);
+
+            if (response.ok) {
+                returnedCraft.map((craft, i) => {
+                    let opt = document.createElement("option");
+                    opt.value = craft.name; // the index
+                    opt.innerHTML = craft.name;
+                    selectTag.append(opt);
+                });
+            }
+            else {
+                let opt = document.createElement("option");
+                opt.innerHTML = "N/A";
+                selectTag.append(opt);
+            }
+                }
+
+        async function getCraftDetail() {
+            const craft = document.getElementById("craft-list").value;
+            const response = await getCraftDetailApi(craft);
+            await displayResponse(response);
+        }
+
+        document.querySelector('#get-craft').addEventListener('click', getCraft);
+        document.querySelector('#get-craft-detail').addEventListener('click', getCraftDetail);
+    </script>
 }
 
 @{
     <form>
-
         <div class="mb-3">
-            <button id="get-token" class="btn btn-primary" type="button">Get Access Token</button>
+            <button id="get-craft" class="btn btn-primary" type="button">Get Craft</button>
         </div>
 
         <div class="mb-3">
-            <label for="token-val" class="col-sm-2 col-form-label">Token Value</label>
-            <input type="text" class="form-control" id="token-val" name="token-val" value="Please" />
+            <label for="craft-list" class="col-sm-2 col-form-label">Craft List</label>
+            <select id="craft-list" class="form-select">
+                <option>N/A</option>
+            </select>
         </div>
 
         <div class="mb-3">
-            <button id="make-fetch" class="btn btn-primary" type="button">Send Request</button>
+            <button id="get-craft-detail" class="btn btn-primary" type="button">Get Craft Detail</button>
         </div>
     </form>
-
-    <div class="alert alert-warning" role="alert">
-        If token has expired, you will need to log out and back in to refresh it
-    </div>
 
     <partial name="_ResponseDisplay" />
 }

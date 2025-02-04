@@ -1,0 +1,37 @@
+﻿@section Scripts
+{
+    <script type="module">
+        import { getWithHeader, displayResponse } from "/js/ApiCalls.js";
+
+        async function makeFetch() {
+            const headerName = document.getElementById("header-name").value;
+            const headerVal = document.getElementById("header-val").value;
+
+            const response = await getWithHeader("Task10/GetData", headerName, headerVal);
+
+            await displayResponse(response);
+        }
+
+        document.querySelector('#make-fetch').addEventListener('click', makeFetch);
+    </script>
+}
+
+@{
+    <form>
+        <div class="mb-3">
+            <label for="header-name" class="col-sm-2 col-form-label">Header Name</label>
+            <input type="text" id="header-name" name="header-name" value="Custom-Auth-Header" />
+        </div>
+        
+        <div class="mb-3">
+            <label for="header-val" class="col-sm-2 col-form-label">Header Value</label>
+            <input type="text" id="header-val" name="header-val" value="Please" />
+        </div>
+
+        <div class="mb-3">
+            <button id="make-fetch" class="btn btn-primary" type="button">Send Request</button>
+        </div>
+    </form>
+
+    <partial name="_ResponseDisplay" />
+}

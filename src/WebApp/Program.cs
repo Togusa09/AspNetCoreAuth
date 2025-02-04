@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using WebApp.Authentication.CustomScheme;
 using WebApp.Authorisation;
@@ -12,6 +13,10 @@ using WebApp.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpLogging(o =>
+{
+    o.LoggingFields = HttpLoggingFields.RequestPath | HttpLoggingFields.ResponseStatusCode;
+});
 
 // Undecided about including, in theory good, in practice didn't seem to handle exceptions from user code well
 builder.Services.AddProblemDetails();
@@ -42,7 +47,9 @@ builder.Services.AddAuthentication(sharedOptions =>
     .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, (options) =>
     {
         // TODO: Strip out non-essential values where possible
+        // Set default sign in scheme to cookie
         options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        // Set authentication type to descriptive value
         // Otherwise defaults to TokenValidationParameters.DefaultAuthenticationType, which is "AuthenticationTypes.Federation"
         options.TokenValidationParameters.AuthenticationType = "OIDC";
 
@@ -165,6 +172,7 @@ builder.Services.AddAuthorization(options =>
 });
 
 var app = builder.Build();
+app.UseHttpLogging();
 
 app.UseExceptionHandler();
 app.UseStatusCodePages();

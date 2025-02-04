@@ -1,6 +1,18 @@
 ﻿@section Scripts
 {
-    <script type="module" src="~/js/Task04Client.js"></script>
+    <script type="module">
+        import { get, displayResponse } from "/js/ApiCalls.js";
+        
+        async function getLocation() {
+            const location = document.getElementById("location").value;
+
+            var response = await get(`Task04/${location}`);
+
+            await displayResponse(response);
+        }
+
+        document.querySelector('#get-location').addEventListener('click', getLocation);
+    </script>
 }
 
 @{

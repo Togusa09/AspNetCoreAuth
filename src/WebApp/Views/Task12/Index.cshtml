@@ -1,0 +1,47 @@
+﻿@section Scripts
+{
+    <script type="module">
+        import { get, getWithHeader, displayResponse } from "/js/ApiCalls.js";
+
+        async function getToken() {
+            var response = await get("Task12/GetUserJwt");
+            const responseContent = await displayResponse(response);
+            document.getElementById("token-val").value = responseContent.trim('"');
+        }
+
+        async function makeFetch() {
+            const headerVal = document.getElementById("token-val").value;
+
+            const response = await getWithHeader("Task12/TestJwt", "Authorization", `Bearer ${headerVal}`);
+
+            await displayResponse(response);
+        }
+
+        document.querySelector('#make-fetch').addEventListener('click', makeFetch);
+        document.querySelector('#get-token').addEventListener('click', getToken);
+    </script>
+}
+
+@{
+    <form>
+
+        <div class="mb-3">
+            <button id="get-token" class="btn btn-primary" type="button">Get Access Token</button>
+        </div>
+
+        <div class="mb-3">
+            <label for="token-val" class="col-sm-2 col-form-label">Token Value</label>
+            <input type="text" class="form-control" id="token-val" name="token-val" value="" />
+        </div>
+
+        <div class="mb-3">
+            <button id="make-fetch" class="btn btn-primary" type="button">Send Request</button>
+        </div>
+    </form>
+
+    <div class="alert alert-warning" role="alert">
+        If token has expired, you will need to log out and back in to refresh it
+    </div>
+
+    <partial name="_ResponseDisplay" />
+}

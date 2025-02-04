@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Guide/4. OIDC Auth/2. Rechallenge OIDC auth.md",
-                "mode": "preview",
-                "source": true
+                "file": "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "2. Rechallenge OIDC auth"
+              "title": "1. Custom Authentication Scheme Setup"
             }
           }
         ]
@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Rename controllers to correspond to task numb",
+                "query": "Globally",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -139,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Guide/4. OIDC Auth/2. Rechallenge OIDC auth.md"
+                "file": "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of 2. Rechallenge OIDC auth"
+              "title": "Outline of 1. Custom Authentication Scheme Setup"
             }
           }
         ],
@@ -150,7 +150,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -165,44 +166,45 @@
   },
   "active": "e64a324e24bd5a45",
   "lastOpenFiles": [
-    "Guide/4. OIDC Auth/1. OIDC Setup.md",
+    "src/WebApp/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
+    "src/WebApp/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll",
+    "src/WebApp/Views/Task09/Index.cshtml",
+    "src/WebApp/Views/Task09",
+    "src/WebApp/Views/Task10/Index.cshtml",
+    "src/WebApp/Views/Task10",
+    "src/WebApp/Views/Task10123/Index.cshtml",
+    "src/WebApp/Views/Task10123",
+    "src/WebApp/Controllers/Task10Controller.cs",
+    "Guide/5. Auth Policies/3. Resource Auth.md",
+    "Guide/5. Auth Policies/2. Authorization Handlers.md",
     "Guide/5. Auth Policies/1. Policies.md",
-    "Tasks.md",
-    "src/WebApp/obj/Debug/net9.0/compressed/ag45vus7fs-zwy3g28n6n.gz",
     "Guide/4. OIDC Auth/2. Rechallenge OIDC auth.md",
-    "src/WebApp/obj/Debug/net9.0/compressed/77ckarqlun-hql5nnd7e1.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/j8tgqzttje-gcaf66isu9.gz",
-    "src/WebApp/obj/Debug/net9.0/compressed/fspdjdrw69-b9sayid5wm.gz",
-    "src/WebApp/wwwroot/js/Task07Client.js",
-    "src/WebApp/wwwroot/js/Task08Client.js",
-    "src/WebApp/wwwroot/js/Task09Client.js",
-    "src/WebApp/Controllers/Task06Controller.cs",
-    "src/WebApp/Views/Task06/SensitivePage.cshtml",
-    "src/WebApp/Views/Task06/Index.cshtml",
-    "Guide/4. OIDC Auth/2. OIDC Claims.md",
+    "Guide/4. OIDC Auth/1. OIDC Setup.md",
+    "src/WebApp/Views/Task11/Index.cshtml",
+    "src/WebApp/Views/Task11",
+    "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
+    "Guide/7. Mocking Authentication For Tests/1. Mock Auth Handler.md",
     "Guide/3. Restricting Auth/3. Roles.md",
     "Guide/3. Restricting Auth/2. Claims.md",
-    "Overview.md",
     "Guide/3. Restricting Auth/1. Attributes.md",
+    "Guide/1. Cookie Auth/1. Cookie Based Authentication.md",
+    "Guide/JWT Auth/1. JWT Bearer token Auth.md",
+    "Guide/3. Restricting Auth/AnonymousTestAuth.png",
+    "Guide/3. Restricting Auth/AnonymousUserInfo.png",
+    "Guide/3. Restricting Auth/WallyUserInfo.png",
+    "Guide/3. Restricting Auth/WallyTestAuth.png",
+    "Guide/3. Restricting Auth/WallyTestEngineerRole.png",
+    "Guide/6. Custom Authentication Scheme/CustomAuthClientFail.png",
+    "Guide/Contents.md",
+    "Guide/0. Setup/Initial setup.md",
+    "Tasks.md",
+    "Overview.md",
+    "Guide/4. OIDC Auth/2. OIDC Claims.md",
     "Guide/3. Restricting Auth/Attributes/TaskTwo_AnonUser_Unauthenticated.png",
     "Guide/3. Restricting Auth/Attributes/TaskTwo_AnonUser_Authenticated.png",
     "Guide/3. Restricting Auth/Attributes/TaskTwo_WithUser_Authenticated.png",
     "Guide/3. Restricting Auth/Attributes/TaskTwo_WithUser_Unauthenticated.png",
-    "Guide/3. Restricting Auth/AnonymousUserInfo.png",
-    "Guide/3. Restricting Auth/AnonymousTestAuth.png",
-    "Guide/3. Restricting Auth/ClaimsDekeLogin.png",
-    "Guide/1. Cookie Auth/1. Cookie Based Authentication.md",
-    "Guide/1. Cookie Auth/CookieAuth3.png",
-    "Guide/1. Cookie Auth/CookieAuth2.png",
-    "Guide/1. Cookie Auth/CookieAuth1.png",
-    "Guide/7. Mocking Authentication For Tests/1. Mock Auth Handler.md",
-    "Guide/0. Setup/Initial setup.md",
     "Guide/Untitled.md",
-    "Guide/Contents.md",
-    "Guide/JWT Auth/1. JWT Bearer token Auth.md",
-    "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
-    "Guide/5. Auth Policies/3. Resource Auth.md",
-    "Guide/5. Auth Policies/2. Authorization Handlers.md",
     "asdsad.md",
     "Guide/Note.md",
     "2025-01-20.md",

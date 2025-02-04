@@ -1,22 +1,32 @@
 ﻿@section Scripts
 {
-    <script type="module" src="~/js/Task07Client.js"></script>
+    <script type="module">
+        import { get, displayResponse } from "/js/ApiCalls.js";
+        
+        async function getLocation() {
+            const location = document.getElementById("location").value;
+
+            var response = await get(`Task07/${location}`);
+
+            await displayResponse(response);
+        }
+
+        document.querySelector('#get-location').addEventListener('click', getLocation);
+    </script>
 }
 
 @{
     <form>
         <div class="mb-3">
-            <label for="header-name" class="col-sm-2 col-form-label">Header Name</label>
-            <input type="text" id="header-name" name="header-name" value="Custom-Auth-Header" />
-        </div>
-        
-        <div class="mb-3">
-            <label for="header-val" class="col-sm-2 col-form-label">Header Value</label>
-            <input type="text" id="header-val" name="header-val" value="Please" />
+            <label for="location" class="col-sm-2 col-form-label">Location</label>
+            <select id="location" class="form-select">
+                <option value="MissionControl">Mission Control</option>
+                <option value="LaunchPad">Launch Pad</option>
+            </select>
         </div>
 
         <div class="mb-3">
-            <button id="make-fetch" class="btn btn-primary" type="button">Send Request</button>
+            <button id="get-location" class="btn btn-primary" type="button">Go To Location</button>
         </div>
     </form>
 
