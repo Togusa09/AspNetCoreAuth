@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace WebApp.Controllers;
 
@@ -17,17 +16,17 @@ public class Task03Controller(ILogger<Task03Controller> logger)
     public IActionResult GetClaims()
     {
         logger.LogInformation("Returning user claims");
-        return OkResponse("Get Claims");
-    }
-
-    private IActionResult OkResponse(string action)
-    {
         return Ok(new
         {
+            // Name of user
             Name = User.Identity?.Name ?? "Anonymous",
-            Action = action,
+            // Action being called
+            Action = "Get Claims",
+            // Authentication method used by user
             AuthenticationType = User.Identity?.AuthenticationType ?? "None",
+            // Whether user is authenticated
             IsAuthenticated = User.Identity?.IsAuthenticated ?? false,
+            // Claims possessed by the user
             Claims = User.Claims.Select(x => new { x.Type, x.Value })
         });
     }
