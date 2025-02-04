@@ -18,10 +18,13 @@ builder.Services.AddProblemDetails();
 
 builder.Services.AddAuthentication(sharedOptions =>
     {
+        // Set cookie auth as the default authentication scheme
         sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     }).AddCookie(options =>
     {
+        // Set auth cookie name
         options.Cookie.Name = "WorkshopAuthCookie";
+
         // For these examples we just want to return error responses instead of redirecting
         options.Events.OnRedirectToAccessDenied = context =>
         {
