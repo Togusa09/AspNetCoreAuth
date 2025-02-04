@@ -16,19 +16,22 @@
 }
 
 @{
-    <form>
-        <div class="mb-3">
-            <label for="location" class="col-sm-2 col-form-label">Location</label>
-            <select id="location" class="form-select">
-                <option value="MissionControl">Mission Control</option>
-                <option value="LaunchPad">Launch Pad</option>
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <button id="get-location" class="btn btn-primary" type="button">Go To Location</button>
-        </div>
-    </form>
-
-    <partial name="_ResponseDisplay" />
+    ViewBag.Title = "Task Four";
 }
+
+
+<form>
+    <div class="mb-3">
+        <label for="location" class="col-sm-2 col-form-label">Location</label>
+        <select id="location" class="form-select">
+            <option value="MissionControl">Mission Control</option>
+            <option value="LaunchPad">Launch Pad</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <button id="get-location" class="btn btn-primary" type="button">Go To Location</button>
+    </div>
+</form>
+
+<partial name="_ResponseDisplay" />

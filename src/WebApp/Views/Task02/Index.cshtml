@@ -4,12 +4,12 @@
         import { displayResponse, get } from "/js/ApiCalls.js";
 
         async function getNoAuth() {
-            const response = await get(`Task02/Anonymous`);
-            await displayResponse(response);
+        const response = await get(`Task02/Anonymous`);
+        await displayResponse(response);
         }
         async function getAuth() {
-            const response = await get(`Task02/Authenticated`);
-            await displayResponse(response);
+        const response = await get(`Task02/Authenticated`);
+        await displayResponse(response);
         }
 
         document.querySelector('#get-no-auth').addEventListener('click', getNoAuth);
@@ -18,15 +18,18 @@
 }
 
 @{
-    <h1>Task Two - Authentication Attributes</h1>
-    <form class="row g-3">
-        <div class="col-auto">
-            <button id="get-no-auth" class="btn btn-primary mb-3" type="button">Call Unauthenticated Url</button>
-        </div>
-        <div class="col-auto">
-            <button id="get-auth" class="btn btn-primary mb-3" type="button">Call Authenticated Url</button>
-        </div>
-    </form>
-
-    <partial name="_ResponseDisplay" />
+    ViewBag.Title = "Task Two";
 }
+
+
+<h1>Task Two - Authentication Attributes</h1>
+<form class="row g-3">
+    <div class="col-auto">
+        <button id="get-no-auth" class="btn btn-primary mb-3" type="button">Call Unauthenticated Url</button>
+    </div>
+    <div class="col-auto">
+        <button id="get-auth" class="btn btn-primary mb-3" type="button">Call Authenticated Url</button>
+    </div>
+</form>
+
+<partial name="_ResponseDisplay" />
