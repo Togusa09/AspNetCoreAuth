@@ -152,19 +152,18 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAuthorization(options =>
 {
-    // Are an astronaut if trained to fly a spacecraft
+    // Astronaut requires pilot role and trained to fly a spacecraft
     options.AddPolicy("Astronaut", policy =>
     {
         //policy.RequireClaim(ClaimTypes.Role, "Pilot");
         //policy.RequireClaim("craft", Craft.Mercury.Name);
         policy.AddRequirements(new IsAstronautRequirement());
     });
-
+    // Flight director just requires the role, no craft training
     options.AddPolicy("FlightDirector", policy =>
     {
-        //policy.RequireClaim(ClaimTypes.Role, "Pilot");
-        //policy.RequireClaim("craft", Craft.Mercury.Name);
-        policy.AddRequirements(new IsFlightDirectorRequirement());
+        policy.RequireClaim(ClaimTypes.Role, "FlightDirector");
+        //policy.AddRequirements(new IsFlightDirectorRequirement());
     });
 
     options.AddPolicy("IsCertifiedForCraft",

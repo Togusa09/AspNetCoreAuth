@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Guide/4. OIDC Auth/1. OIDC Setup.md",
+                "file": "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
                 "mode": "source",
-                "source": true
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "1. OIDC Setup"
+              "title": "1. Custom Authentication Scheme Setup"
             }
           }
         ]
@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Task03Controller",
+                "query": "HttpContextAc",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -139,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Guide/4. OIDC Auth/1. OIDC Setup.md"
+                "file": "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of 1. OIDC Setup"
+              "title": "Outline of 1. Custom Authentication Scheme Setup"
             }
           }
         ],
@@ -166,9 +166,22 @@
   },
   "active": "e64a324e24bd5a45",
   "lastOpenFiles": [
+    "Guide/5. Auth Policies/3. Resource Auth.md",
+    "Guide/5. Auth Policies/1. Policies.md",
+    "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
+    "Guide/4. OIDC Auth/AuthCookie.png",
+    "Guide/6. Custom Authentication Scheme/CustomAuthFailResponse.png",
+    "Guide/6. Custom Authentication Scheme/CustomAuthSucceedResponse.png",
+    "Guide/6. Custom Authentication Scheme/CustomAuthClientSucceed.png",
+    "Guide/6. Custom Authentication Scheme/CustomAuthClientFail.png",
+    "Guide/6. Custom Authentication Scheme",
+    "Guide/5. Auth Policies/2. Authorization Handlers.md",
+    "Tasks.md",
+    "Guide/4. OIDC Auth/2. Rechallenge OIDC auth.md",
+    "Guide/JWT Auth/1. JWT Bearer token Auth.md",
+    "Guide/4. OIDC Auth/1. OIDC Setup.md",
     "Guide/3. Restricting Auth/3. Roles.md",
     "Guide/3. Restricting Auth/2. Claims.md",
-    "Tasks.md",
     "src/WebApp/Controllers/r2jvgh5l.nac~",
     "Guide/3. Restricting Auth/1. Attributes.md",
     "Guide/1. Cookie Auth/1. Cookie Based Authentication.md",
@@ -181,29 +194,17 @@
     "Temp/Views/Task07/Index.cshtml",
     "Temp/Views/Task03/Index.cshtml",
     "Temp/Views/Task06/Index.cshtml",
-    "Temp/Views/Task06/SensitivePage.cshtml",
     "Guide/Contents.md",
-    "Guide/JWT Auth/1. JWT Bearer token Auth.md",
     "Guide/7. Mocking Authentication For Tests/1. Mock Auth Handler.md",
-    "Guide/6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
-    "Guide/5. Auth Policies/3. Resource Auth.md",
-    "Guide/5. Auth Policies/2. Authorization Handlers.md",
-    "Guide/5. Auth Policies/1. Policies.md",
-    "Guide/4. OIDC Auth/2. Rechallenge OIDC auth.md",
-    "Guide/4. OIDC Auth/1. OIDC Setup.md",
+    "6. Custom Authentication Scheme/1. Custom Authentication Scheme Setup.md",
     "Guide/Untitled.md",
     "Guide/3. Restricting Auth/AnonymousTestAuth.png",
     "Guide/3. Restricting Auth/AnonymousUserInfo.png",
     "Guide/3. Restricting Auth/WallyUserInfo.png",
     "Guide/3. Restricting Auth/WallyTestAuth.png",
     "Guide/3. Restricting Auth/WallyTestEngineerRole.png",
-    "Guide/6. Custom Authentication Scheme/CustomAuthClientFail.png",
     "Overview.md",
     "Guide/4. OIDC Auth/2. OIDC Claims.md",
-    "Guide/3. Restricting Auth/Attributes/TaskTwo_AnonUser_Unauthenticated.png",
-    "Guide/3. Restricting Auth/Attributes/TaskTwo_AnonUser_Authenticated.png",
-    "Guide/3. Restricting Auth/Attributes/TaskTwo_WithUser_Authenticated.png",
-    "Guide/3. Restricting Auth/Attributes/TaskTwo_WithUser_Unauthenticated.png",
     "asdsad.md",
     "Guide/Note.md",
     "2025-01-20.md",

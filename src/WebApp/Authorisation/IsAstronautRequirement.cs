@@ -25,6 +25,11 @@ namespace WebApp.Authorisation
 
             logger.LogInformation("User has {role}", "Pilot");
 
+            //if (context.User.HasClaim("craft", Craft.Mercury.Name))
+            //{
+            //    context.Succeed(requirement);
+            //}
+
             var intersection = context.User.FindAll("craft").IntersectBy(_spaceCraft.Select(c => c.Name), c => c.Value);
             if (!intersection.Any())
             {

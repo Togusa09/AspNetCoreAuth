@@ -35,16 +35,13 @@ public class Task06Controller(
 
 
         // Not sure if we should be reaching here cause of the challenge?
-
-        // View should already exist in workshop assets
-        return View();
+        return View(); // View included in workshop assets
     }
 
     [RequireReauthentication(120)]
     [HttpGet("SensitivePage")]
     public IActionResult SensitivePage()
     {
-        // View should already exist in workshop assets
-        return View();
+        return View(); // View included in workshop assets
     }
 }

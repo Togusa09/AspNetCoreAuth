@@ -16,4 +16,6 @@
 - [ ] Create archive of initial state for releases
 - [ ] Custom 404 handler with note about how controller may not be implemented yet
 - [ ] Fix homepage link styling
-- [ ] Remove Wally or Deke - Having both isn't adding anything
+- [ ] Reduce user list - 1 Mercury only for cookie, 1 Flight Director, 1 non-mercury astronaut
+	- [ ] Should find a candidate for astronaut and mission control? (Maybe Deke?)
+	- [ ] Remove Wally or Deke - Having both isn't adding anything
